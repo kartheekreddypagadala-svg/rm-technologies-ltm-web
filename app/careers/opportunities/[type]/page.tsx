@@ -47,8 +47,11 @@ export default async function CareerOpportunitiesPage({
         <div className="mx-auto flex max-w-[1450px] items-center justify-between">
           <Link href="/careers" className="text-2xl font-extrabold">
             <span className="text-[#ff6254]">RULINGMIND</span>
-            <span className="ml-2 text-[10px] tracking-[3px]">TECH</span>
+            <span className="ml-2 text-[10px] tracking-[3px]">
+              TECH
+            </span>
           </Link>
+
           <span className="text-xs tracking-widest text-white/60">
             CAREERS PORTAL
           </span>
@@ -104,13 +107,18 @@ export default async function CareerOpportunitiesPage({
 
           <div className="mt-12 border border-[#e3e8ee]">
             <div className="border-b border-[#e3e8ee] px-6 py-5">
-              <strong>{jobs.reduce((total, job) => total + job.openings, 0)}</strong>
+              <strong>
+                {jobs.reduce((total, job) => total + job.openings, 0)}
+              </strong>
               {" "}opening(s) listed
             </div>
 
             {jobs.map((job, index) => {
               const detailHref =
                 `/careers/opportunities/${type}/${job.slug}`;
+
+              const applyHref =
+                `/contact?service=Other&role=${encodeURIComponent(job.title)}&category=${encodeURIComponent(category.title)}`;
 
               return (
                 <article
@@ -131,7 +139,9 @@ export default async function CareerOpportunitiesPage({
                       </Link>
 
                       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#68778a]">
-                        <span>{`Job ID: RMT-${String(index + 1).padStart(3, "0")}`}</span>
+                        <span>
+                          {`Job ID: RMT-${String(index + 1).padStart(3, "0")}`}
+                        </span>
 
                         <span className="flex items-center gap-1">
                           <BriefcaseBusiness size={14} />
@@ -154,14 +164,18 @@ export default async function CareerOpportunitiesPage({
 
                   <div className="flex shrink-0 items-center gap-3 pl-16 md:pl-0">
                     <Link
-                      href={`/contact?service=Other&role=${encodeURIComponent(job.title)}&category=${encodeURIComponent(category.title)}`}
+                      href={applyHref}
                       className="inline-flex items-center gap-2 border border-[#f2553f] px-5 py-3 text-sm font-semibold text-[#171717] transition hover:bg-[#f2553f] hover:text-white"
                     >
                       Apply
                       <ArrowUpRight size={16} />
                     </Link>
 
-                    <JobShare title={job.title} />
+                    {/* FIX: Added the required href property */}
+                    <JobShare
+                      title={job.title}
+                      href={detailHref}
+                    />
                   </div>
                 </article>
               );

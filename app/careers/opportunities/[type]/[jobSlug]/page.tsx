@@ -20,7 +20,8 @@ import {
 
 export const metadata: Metadata = {
   title: "Job Details | RulingMindTech",
-  description: "Explore job details and career opportunities at RulingMindTech.",
+  description:
+    "Explore job details and career opportunities at RulingMindTech.",
 };
 
 export const dynamicParams = false;
@@ -61,6 +62,10 @@ export default async function JobDetailsPage({
     `&role=${encodeURIComponent(job.title)}` +
     `&category=${encodeURIComponent(category.title)}`;
 
+  // URL used by the JobShare component
+  const detailHref =
+    `/careers/opportunities/${job.category}/${job.slug}`;
+
   return (
     <main className="min-h-screen bg-white text-[#172333]">
 
@@ -69,7 +74,9 @@ export default async function JobDetailsPage({
         <div className="mx-auto flex max-w-[1450px] items-center justify-between">
           <Link href="/careers" className="text-2xl font-extrabold">
             <span className="text-[#ff6254]">RULINGMIND</span>
-            <span className="ml-2 text-[10px] tracking-[3px]">TECH</span>
+            <span className="ml-2 text-[10px] tracking-[3px]">
+              TECH
+            </span>
           </Link>
 
           <span className="text-xs tracking-widest text-white/60">
@@ -123,8 +130,10 @@ export default async function JobDetailsPage({
               <ArrowUpRight size={18} />
             </Link>
 
-            <JobShare title={job.title} />
-
+            <JobShare
+              title={job.title}
+              href={detailHref}
+            />
           </div>
         </div>
       </section>
