@@ -1,0 +1,280 @@
+
+"use client";
+
+import { FormEvent, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { SERVICES } from "@/lib/validate";
+
+type Status = "idle" | "sending" | "sent" | "error";
+
+type Props = {
+  defaultService?: string;
+  defaultMessage?: string;
+};
+
+const field =
+  "h-[58px] w-full rounded-full border border-[#292929] bg-white px-5 text-[16px] text-black outline-none transition placeholder:text-black focus:border-[#f2553f] focus:ring-2 focus:ring-[#f2553f]/10";
+
+const countries = [
+  "India",
+  "United States",
+  "United Kingdom",
+  "Canada",
+  "Australia",
+  "United Arab Emirates",
+  "Singapore",
+  "Germany",
+  "France",
+  "Japan",
+  "Netherlands",
+  "New Zealand",
+  "Saudi Arabia",
+  "South Africa",
+  "Other",
+];
+
+export default function ContactForm({
+  defaultService = "Other",
+  defaultMessage = "",
+}: Props) {
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    setStatus("sending");
+    setError("");
+
+    try {
+      const formData = new FormData(form);
+
+      const payload = {
+        ...Object.fromEntries(formData.entries()),
+        dataConsent: formData.get("dataConsent") === "true",
+        marketingConsent:
+          formData.get("marketingConsent") === "true",
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(
+          result.error || "Unable to send your enquiry. Please try again."
+        );
+      }
+
+      form.reset();
+      setStatus("sent");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
+      setStatus("error");
+    }
+  }
+
+  const service = SERVICES.includes(defaultService)
+    ? defaultService
+    : "Other";
+
+  return (
+    <form onSubmit={onSubmit} className="grid gap-[26px]">
+
+      {/* HONEYPOT */}
+      <input
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
+
+      <input type="hidden" name="service" value={service} />
+
+      {/* FIRST NAME */}
+      <input
+        name="firstName"
+        type="text"
+        autoComplete="given-name"
+        required
+        maxLength={50}
+        placeholder="First Name*"
+        aria-label="First Name"
+        className={field}
+      />
+
+      {/* LAST NAME */}
+      <input
+        name="lastName"
+        type="text"
+        autoComplete="family-name"
+        required
+        maxLength={50}
+        placeholder="Last Name*"
+        aria-label="Last Name"
+        className={field}
+      />
+
+      {/* EMAIL */}
+      <input
+        name="email"
+        type="email"
+        autoComplete="email"
+        required
+        maxLength={254}
+        placeholder="Email Address*"
+        aria-label="Email Address"
+        className={field}
+      />
+
+      {/* COMPANY */}
+      <input
+        name="company"
+        type="text"
+        autoComplete="organization"
+        required
+        maxLength={150}
+        placeholder="Company*"
+        aria-label="Company"
+        className={field}
+      />
+
+      {/* JOB TITLE */}
+      <input
+        name="jobTitle"
+        type="text"
+        autoComplete="organization-title"
+        required
+        maxLength={100}
+        placeholder="Job Title*"
+        aria-label="Job Title"
+        className={field}
+      />
+
+      {/* COUNTRY */}
+      <select
+        name="country"
+        required
+        defaultValue=""
+        aria-label="Country"
+        className={`${field} appearance-none cursor-pointer`}
+      >
+        <option value="" disabled>
+          Country*
+        </option>
+
+        {countries.map((country) => (
+          <option key={country} value={country}>
+            {country}
+          </option>
+        ))}
+      </select>
+
+      {/* MESSAGE */}
+      <textarea
+        name="message"
+        required
+        minLength={5}
+        maxLength={4000}
+        rows={5}
+        defaultValue={defaultMessage}
+        placeholder="Let us know how we can help you*"
+        aria-label="Message"
+        className="min-h-[125px] w-full resize-y rounded-[30px] border border-[#292929] bg-white px-5 py-4 text-[16px] text-black outline-none transition placeholder:text-black focus:border-[#f2553f] focus:ring-2 focus:ring-[#f2553f]/10"
+      />
+
+      {/* REQUIRED DATA CONSENT */}
+      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-black">
+        <input
+          type="checkbox"
+          name="dataConsent"
+          value="true"
+          required
+          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#f2553f]"
+        />
+
+        <span>
+          I agree to RulingMindTech collecting and processing my
+          personal data to respond to my request and provide related
+          services. <span className="font-semibold">*</span>
+        </span>
+      </label>
+
+      {/* OPTIONAL MARKETING CONSENT */}
+      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-black">
+        <input
+          type="checkbox"
+          name="marketingConsent"
+          value="true"
+          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#f2553f]"
+        />
+
+        <span>
+          I agree to receive details about services, events and
+          marketing communications from RulingMindTech.
+        </span>
+      </label>
+
+      {/* PRIVACY POLICY */}
+      <p className="text-[14px] leading-6 text-black">
+        To learn more about how we protect your data, please refer
+        to the{" "}
+        <a
+          href="/privacy-policy"
+          className="font-semibold underline underline-offset-2 transition hover:text-[#f2553f]"
+        >
+          RulingMindTech Privacy Policy
+        </a>.
+      </p>
+
+      {/* SECURITY NOTICE */}
+      <p className="text-[14px] text-[#333]">
+        Your information is submitted securely through our contact form.
+      </p>
+
+      {/* SUBMIT BUTTON */}
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="inline-flex w-fit items-center justify-center gap-3 rounded-full bg-[#e83232] px-12 py-4 text-[15px] font-bold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "sending" ? "Sending..." : "Submit"}
+
+        <ArrowRight size={19} />
+      </button>
+
+      {/* SUCCESS */}
+      {status === "sent" && (
+        <div
+          role="status"
+          className="rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800"
+        >
+          Thank you! Your enquiry has been submitted successfully.
+        </div>
+      )}
+
+      {/* ERROR */}
+      {status === "error" && (
+        <div
+          role="alert"
+          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+        >
+          {error}
+        </div>
+      )}
+    </form>
+  );
+}
