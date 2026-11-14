@@ -76,172 +76,275 @@ const steps = [
   ["Operate", "Monitor, support and keep improving."],
 ];
 
+/* ==========================================
+   REUSABLE HERO ILLUSTRATION
+========================================== */
+
+function HeroArtwork() {
+  return (
+    <>
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F3F6FA] to-white" />
+
+      <div className="absolute inset-0">
+        <svg
+          viewBox="0 0 650 420"
+          className="absolute inset-0 h-full w-full"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid meet"
+          role="img"
+          aria-label="Abstract geometric technology illustration"
+        >
+          <g stroke="#42658A" strokeWidth="1.2" opacity="0.7">
+            <path d="M50 230 L190 170 L310 210 L440 90 L590 45" />
+            <path d="M90 110 L220 155 L350 65 L510 125 L610 80" />
+            <path d="M40 330 L190 280 L330 320 L480 260 L620 300" />
+            <path d="M190 170 L190 350" />
+            <path d="M310 65 L310 320" />
+            <path d="M440 90 L440 345" />
+            <path d="M590 45 L590 300" />
+            <path d="M90 110 L90 250" />
+            <path d="M510 125 L510 345" />
+          </g>
+
+          <g fill="#B28B36">
+            <circle cx="50" cy="230" r="4" />
+            <circle cx="190" cy="170" r="4" />
+            <circle cx="310" cy="210" r="4" />
+            <circle cx="440" cy="90" r="4" />
+            <circle cx="590" cy="45" r="4" />
+            <circle cx="90" cy="110" r="4" />
+            <circle cx="510" cy="125" r="4" />
+            <circle cx="620" cy="300" r="4" />
+          </g>
+
+          <g fill="#071536">
+            <circle cx="350" cy="65" r="3" />
+            <circle cx="480" cy="260" r="3" />
+            <circle cx="190" cy="350" r="3" />
+          </g>
+        </svg>
+
+        {/* GLASS PANEL 1 */}
+
+        <div
+          className="absolute left-[15%] top-[14%] h-[47%] w-[24%] border border-[#8CB4D7]/70 bg-gradient-to-br from-white/90 via-[#DCEAF6]/75 to-[#8DB8DB]/40 shadow-[0_12px_35px_rgba(7,21,54,0.08)]"
+          style={{
+            clipPath: "polygon(0 25%, 100% 0, 100% 80%, 0 100%)",
+          }}
+        />
+
+        {/* GLASS PANEL 2 */}
+
+        <div
+          className="absolute left-[42%] top-[5%] h-[65%] w-[24%] border border-[#7FA9CE]/60 bg-gradient-to-br from-white/80 via-[#D4E6F5]/70 to-[#669AC5]/60"
+          style={{
+            clipPath: "polygon(0 25%, 100% 0, 100% 75%, 0 100%)",
+          }}
+        />
+
+        {/* GLASS PANEL 3 */}
+
+        <div
+          className="absolute left-[66%] top-[28%] h-[45%] w-[25%] border border-[#8BB5D6]/70 bg-gradient-to-br from-[#EAF3FA]/80 to-[#A9CBE5]/70 shadow-lg"
+          style={{
+            clipPath: "polygon(0 0, 100% 20%, 100% 85%, 0 100%)",
+          }}
+        />
+
+        {/* NAVY PANEL 1 */}
+
+        <div
+          className="absolute left-[39%] top-[39%] h-[38%] w-[17%] bg-gradient-to-br from-[#071536] to-[#17416D]"
+          style={{
+            clipPath: "polygon(0 25%, 100% 0, 100% 100%, 0 100%)",
+          }}
+        />
+
+        {/* NAVY PANEL 2 */}
+
+        <div
+          className="absolute left-[67%] top-[10%] h-[34%] w-[16%] bg-gradient-to-br from-[#071536] to-[#244F79]"
+          style={{
+            clipPath: "polygon(0 0, 100% 30%, 100% 100%, 0 75%)",
+          }}
+        />
+
+        {/* LOWER GLASS PANEL */}
+
+        <div
+          className="absolute left-[54%] top-[65%] h-[26%] w-[25%] border border-[#8CB4D7]/60 bg-gradient-to-br from-white/80 to-[#9DC4E2]/70"
+          style={{
+            clipPath: "polygon(0 0, 100% 15%, 100% 100%, 0 75%)",
+          }}
+        />
+
+        {/* DECORATIVE LIGHT PANELS */}
+
+        <div
+          className="absolute left-[7%] top-[62%] h-[20%] w-[27%] bg-gradient-to-br from-[#EAF3FA]/70 to-[#A9C9E3]/60"
+          style={{
+            clipPath: "polygon(0 40%, 100% 0, 100% 80%, 0 100%)",
+          }}
+        />
+
+        {/* GOLD ACCENT */}
+
+        <div className="absolute bottom-[12%] left-[25%] h-[2px] w-[55%] rotate-[-8deg] bg-gradient-to-r from-transparent via-[#B28B36]/70 to-transparent" />
+      </div>
+    </>
+  );
+}
+
+/* ==========================================
+   HOMEPAGE
+========================================== */
+
 export default function Home() {
   return (
     <>
-      {/* 1. RULINGMIND TECHNOLOGIES - PREMIUM WHITE HERO */}
+      {/* ==========================================
+          1. RESPONSIVE HERO SECTION
+      ========================================== */}
 
       <section className="relative overflow-hidden border-t-[4px] border-[#B28B36] bg-white">
-        <div className="relative mx-auto grid min-h-[420px] max-w-[1600px] items-center lg:grid-cols-[1fr_1fr]">
-          {/* LEFT CONTENT */}
-          <div className="relative z-20 px-7 py-14 sm:px-12 lg:py-16 lg:pl-16 xl:pl-20">
-            <Reveal className="max-w-[650px]">
-              {/* BRAND NAME */}
-              <p className="mb-5 text-[12px] font-extrabold uppercase tracking-[2.5px] text-[#071536]">
-                RULINGMIND TECHNOLOGIES
-              </p>
 
-              {/* MAIN HEADING */}
-              <h1 className="font-display text-[clamp(40px,5vw,58px)] font-extrabold leading-[1.02] tracking-[-2px] text-[#071536]">
-                Building Intelligent
-                <br />
-                Businesses
-              </h1>
+        <div className="mx-auto max-w-[1600px]">
 
-              {/* DESCRIPTION */}
-              <p className="mt-5 max-w-[590px] text-[17px] leading-[1.55] text-[#374151] sm:text-[19px]">
-                Technology, cloud, cybersecurity and AI services that help
-                organisations improve their digital capabilities.
-              </p>
+          {/* DESKTOP HERO */}
 
-              {/* BUTTONS */}
-              <div className="mt-7 flex flex-wrap gap-4">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-3 rounded-md bg-[#071536] px-7 py-3.5 text-[15px] font-bold text-white shadow-sm transition duration-300 hover:bg-[#B28B36]"
-                >
-                  Explore Our Services
-                  <ArrowRight size={17} />
-                </Link>
+          <div className="hidden min-h-[420px] items-center lg:grid lg:grid-cols-[1fr_1fr]">
 
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-3 rounded-md border-2 border-[#071536] px-7 py-3 text-[15px] font-bold text-[#071536] transition duration-300 hover:bg-[#071536] hover:text-white"
-                >
-                  Talk to Us
-                  <ArrowUpRight size={17} />
-                </Link>
-              </div>
-            </Reveal>
+            {/* LEFT CONTENT */}
+
+            <div className="relative z-20 px-7 py-14 sm:px-12 lg:py-16 lg:pl-16 xl:pl-20">
+
+              <Reveal className="max-w-[650px]">
+
+                <p className="mb-5 text-[12px] font-extrabold uppercase tracking-[2.5px] text-[#071536]">
+                  RULINGMIND TECHNOLOGIES
+                </p>
+
+                <h1 className="font-display text-[clamp(40px,5vw,58px)] font-extrabold leading-[1.02] tracking-[-2px] text-[#071536]">
+                  Building Intelligent
+                  <br />
+                  Businesses
+                </h1>
+
+                <p className="mt-5 max-w-[590px] text-[17px] leading-[1.55] text-[#374151] sm:text-[19px]">
+                  Technology, cloud, cybersecurity and AI services that help
+                  organisations improve their digital capabilities.
+                </p>
+
+                <div className="mt-7 flex flex-wrap gap-4">
+
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-3 rounded-md bg-[#071536] px-7 py-3.5 text-[15px] font-bold text-white shadow-sm transition duration-300 hover:bg-[#B28B36]"
+                  >
+                    Explore Our Services
+                    <ArrowRight size={17} />
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-3 rounded-md border-2 border-[#071536] px-7 py-3 text-[15px] font-bold text-[#071536] transition duration-300 hover:bg-[#071536] hover:text-white"
+                  >
+                    Talk to Us
+                    <ArrowUpRight size={17} />
+                  </Link>
+
+                </div>
+
+              </Reveal>
+            </div>
+
+            {/* RIGHT GEOMETRIC VISUAL */}
+
+            <div className="relative h-[420px] overflow-hidden">
+              <HeroArtwork />
+            </div>
+
           </div>
 
-          {/* RIGHT GEOMETRIC VISUAL */}
-          <div className="relative hidden h-[420px] overflow-hidden lg:block">
-            {/* SOFT BACKGROUND */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F3F6FA] to-white" />
+          {/* MOBILE HERO - LTM INSPIRED */}
 
-            {/* GEOMETRIC ARTWORK */}
-            <div className="absolute inset-0">
-              {/* SVG CONNECTING LINES */}
-              <svg
-                viewBox="0 0 650 420"
-                className="absolute inset-0 h-full w-full"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g stroke="#42658A" strokeWidth="1.2" opacity="0.7">
-                  <path d="M50 230 L190 170 L310 210 L440 90 L590 45" />
-                  <path d="M90 110 L220 155 L350 65 L510 125 L610 80" />
-                  <path d="M40 330 L190 280 L330 320 L480 260 L620 300" />
-                  <path d="M190 170 L190 350" />
-                  <path d="M310 65 L310 320" />
-                  <path d="M440 90 L440 345" />
-                  <path d="M590 45 L590 300" />
-                  <path d="M90 110 L90 250" />
-                  <path d="M510 125 L510 345" />
-                </g>
+          <div className="px-4 py-5 sm:px-6 sm:py-7 lg:hidden">
 
-                <g fill="#B28B36">
-                  <circle cx="50" cy="230" r="4" />
-                  <circle cx="190" cy="170" r="4" />
-                  <circle cx="310" cy="210" r="4" />
-                  <circle cx="440" cy="90" r="4" />
-                  <circle cx="590" cy="45" r="4" />
-                  <circle cx="90" cy="110" r="4" />
-                  <circle cx="510" cy="125" r="4" />
-                  <circle cx="620" cy="300" r="4" />
-                </g>
+            <div className="overflow-hidden rounded-[24px] bg-[#071536] shadow-[0_18px_50px_rgba(7,21,54,0.16)]">
 
-                <g fill="#071536">
-                  <circle cx="350" cy="65" r="3" />
-                  <circle cx="480" cy="260" r="3" />
-                  <circle cx="190" cy="350" r="3" />
-                </g>
-              </svg>
+              {/* MOBILE TEXT CONTENT */}
 
-              {/* GLASS PANEL 1 */}
-              <div
-                className="absolute left-[15%] top-[14%] h-[47%] w-[24%] border border-[#8CB4D7]/70 bg-gradient-to-br from-white/90 via-[#DCEAF6]/75 to-[#8DB8DB]/40 shadow-[0_12px_35px_rgba(7,21,54,0.08)]"
-                style={{
-                  clipPath: "polygon(0 25%, 100% 0, 100% 80%, 0 100%)",
-                }}
-              />
+              <div className="px-6 pb-1 pt-7 sm:px-8 sm:pt-9">
 
-              {/* GLASS PANEL 2 */}
-              <div
-                className="absolute left-[42%] top-[5%] h-[65%] w-[24%] border border-[#7FA9CE]/60 bg-gradient-to-br from-white/80 via-[#D4E6F5]/70 to-[#669AC5]/60"
-                style={{
-                  clipPath: "polygon(0 25%, 100% 0, 100% 75%, 0 100%)",
-                }}
-              />
+                <p className="mb-4 text-[10px] font-extrabold uppercase tracking-[2.4px] text-[#B28B36] sm:text-xs">
+                  RULINGMIND TECHNOLOGIES
+                </p>
 
-              {/* GLASS PANEL 3 */}
-              <div
-                className="absolute left-[66%] top-[28%] h-[45%] w-[25%] border border-[#8BB5D6]/70 bg-gradient-to-br from-[#EAF3FA]/80 to-[#A9CBE5]/70 shadow-lg"
-                style={{
-                  clipPath: "polygon(0 0, 100% 20%, 100% 85%, 0 100%)",
-                }}
-              />
+                <h1 className="max-w-[520px] font-display text-[clamp(34px,8vw,48px)] font-extrabold leading-[1.04] tracking-[-1.5px] text-white">
+                  Building Intelligent Businesses
+                </h1>
 
-              {/* NAVY PANEL 1 */}
-              <div
-                className="absolute left-[39%] top-[39%] h-[38%] w-[17%] bg-gradient-to-br from-[#071536] to-[#17416D]"
-                style={{
-                  clipPath: "polygon(0 25%, 100% 0, 100% 100%, 0 100%)",
-                }}
-              />
+                <p className="mt-4 max-w-[560px] text-[15px] leading-[1.65] text-white/80 sm:text-base">
+                  Technology, cloud, cybersecurity and AI services that help
+                  organisations improve their digital capabilities.
+                </p>
 
-              {/* NAVY PANEL 2 */}
-              <div
-                className="absolute left-[67%] top-[10%] h-[34%] w-[16%] bg-gradient-to-br from-[#071536] to-[#244F79]"
-                style={{
-                  clipPath: "polygon(0 0, 100% 30%, 100% 100%, 0 75%)",
-                }}
-              />
+                {/* MOBILE CTA BUTTONS */}
 
-              {/* LOWER GLASS PANEL */}
-              <div
-                className="absolute left-[54%] top-[65%] h-[26%] w-[25%] border border-[#8CB4D7]/60 bg-gradient-to-br from-white/80 to-[#9DC4E2]/70"
-                style={{
-                  clipPath: "polygon(0 0, 100% 15%, 100% 100%, 0 75%)",
-                }}
-              />
+                <div className="mt-6 flex flex-col gap-3 min-[420px]:flex-row">
 
-              {/* DECORATIVE LIGHT PANELS */}
-              <div
-                className="absolute left-[7%] top-[62%] h-[20%] w-[27%] bg-gradient-to-br from-[#EAF3FA]/70 to-[#A9C9E3]/60"
-                style={{
-                  clipPath: "polygon(0 40%, 100% 0, 100% 80%, 0 100%)",
-                }}
-              />
+                  <Link
+                    href="/services"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-3 rounded-md bg-[#B28B36] px-5 py-3 text-sm font-bold text-[#071536] transition hover:bg-white"
+                  >
+                    Explore Our Services
+                    <ArrowRight size={17} />
+                  </Link>
 
-              {/* GOLD ACCENT */}
-              <div className="absolute bottom-[12%] left-[25%] h-[2px] w-[55%] rotate-[-8deg] bg-gradient-to-r from-transparent via-[#B28B36]/70 to-transparent" />
+                  <Link
+                    href="/contact"
+                    className="inline-flex min-h-[48px] items-center justify-center gap-3 rounded-md border border-white/80 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#071536]"
+                  >
+                    Talk to Us
+                    <ArrowUpRight size={17} />
+                  </Link>
+
+                </div>
+
+              </div>
+
+              {/* COMPLETE MOBILE ILLUSTRATION */}
+
+              <div className="relative mx-3 mb-3 mt-6 aspect-[650/420] overflow-hidden rounded-[17px] bg-[#F3F6FA] sm:mx-4 sm:mb-4">
+                <HeroArtwork />
+              </div>
+
             </div>
           </div>
+
         </div>
 
-        {/* BOTTOM LIGHT BLUE-GREY ACCENT */}
+        {/* BOTTOM ACCENT */}
+
         <div className="h-[12px] bg-[#F3F6FA]" />
+
       </section>
 
-      {/* 2. RULINGMIND TECHNOLOGIES - OUR CAPABILITIES */}
+      {/* ==========================================
+          2. OUR CAPABILITIES
+      ========================================== */}
 
       <section className="bg-[#071536] py-24 text-white md:py-32">
+
         <div className="mx-auto max-w-[1320px] px-6 lg:px-10">
+
           {/* SECTION INTRODUCTION */}
+
           <div className="mb-14 grid gap-8 md:grid-cols-2 md:items-start">
+
             <Reveal>
+
               <h2 className="font-display text-[clamp(38px,5vw,64px)] font-semibold leading-[1.05] tracking-tight text-white">
                 Engineering possibilities.
                 <br />
@@ -249,21 +352,28 @@ export default function Home() {
                   Building what's next.
                 </span>
               </h2>
+
             </Reveal>
 
             <Reveal delay={0.1}>
+
               <p className="max-w-[570px] text-lg leading-[1.7] text-[#DDE3EC] md:ml-auto">
                 Our technology expertise spans artificial intelligence,
                 software engineering, cloud infrastructure and enterprise
                 solutions. We turn business challenges into practical,
                 scalable technology solutions.
               </p>
+
             </Reveal>
+
           </div>
 
           {/* CAPABILITY CARDS */}
+
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {/* 1. AI SOLUTIONS - LARGE CARD */}
+
+            {/* AI SOLUTIONS */}
+
             <Link
               href="/solutions/ai-powered-business-solutions"
               className="group relative flex min-h-[350px] overflow-hidden rounded-[28px] bg-[#071536] p-8 md:col-span-2 md:min-h-[370px]"
@@ -276,7 +386,9 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
+
               <div className="relative z-10 flex flex-col">
+
                 <span className="mb-5 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
                   Artificial Intelligence
                 </span>
@@ -290,10 +402,13 @@ export default function Home() {
                   intelligence, machine learning, generative AI,
                   intelligent automation and data-driven technologies.
                 </p>
+
               </div>
+
             </Link>
 
-            {/* 2. SOFTWARE DEVELOPMENT - TALL CARD */}
+            {/* SOFTWARE DEVELOPMENT */}
+
             <Link
               href="/services/software-development"
               className="group relative flex min-h-[480px] overflow-hidden rounded-[28px] bg-[#071536] p-8 md:row-span-2"
@@ -306,7 +421,9 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
+
               <div className="relative z-10 flex flex-col">
+
                 <span className="mb-5 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
                   Software Engineering
                 </span>
@@ -320,10 +437,13 @@ export default function Home() {
                   applications, enterprise platforms and custom
                   software tailored to business requirements.
                 </p>
+
               </div>
+
             </Link>
 
-            {/* 3. CLOUD & DEVOPS */}
+            {/* CLOUD & DEVOPS */}
+
             <Link
               href="/services/cloud-computing-infrastructure"
               className="group relative flex min-h-[300px] overflow-hidden rounded-[28px] bg-[#071536] p-8"
@@ -336,7 +456,9 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
+
               <div className="relative z-10 flex flex-col">
+
                 <span className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
                   Cloud & DevOps
                 </span>
@@ -350,10 +472,13 @@ export default function Home() {
                   deployments, implementing CI/CD pipelines and
                   modernising application environments.
                 </p>
+
               </div>
+
             </Link>
 
-            {/* 4. DATA & ENTERPRISE SOLUTIONS */}
+            {/* DATA & ENTERPRISE SOLUTIONS */}
+
             <Link
               href="/solutions/enterprise-digital-transformation"
               className="group relative flex min-h-[300px] overflow-hidden rounded-[28px] bg-[#071536] p-8"
@@ -366,7 +491,9 @@ export default function Home() {
                 backgroundPosition: "center",
               }}
             >
+
               <div className="relative z-10 flex flex-col">
+
                 <span className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
                   Data & Enterprise Technology
                 </span>
@@ -380,24 +507,41 @@ export default function Home() {
                   management, enterprise integration and digital
                   transformation solutions.
                 </p>
+
               </div>
+
             </Link>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* 3. UPDATES AND ANNOUNCEMENTS */}
+      {/* ==========================================
+          3. UPDATES AND ANNOUNCEMENTS
+      ========================================== */}
+
       <UpdatesAnnouncements />
 
-      {/* 3. OUTCREATING CASE STUDY CAROUSEL */}
+      {/* ==========================================
+          4. OUTCREATING CASE STUDY CAROUSEL
+      ========================================== */}
+
       <OutcreatingCarousel />
 
-      {/* OUR PEOPLE AND TECHNOLOGY SECTION */}
+      {/* ==========================================
+          5. OUR PEOPLE AND TECHNOLOGY
+      ========================================== */}
 
       <section className="overflow-hidden bg-[#071536] px-6 py-24 text-white md:px-10 md:py-32">
+
         <div className="mx-auto grid max-w-[1500px] items-center gap-16 lg:grid-cols-2 lg:gap-24">
+
           {/* LEFT CONTENT */}
+
           <div>
+
             <p className="mb-6 text-xs font-bold uppercase tracking-[4px] text-[#B28B36]">
               RulingMind Technologies
             </p>
@@ -429,15 +573,19 @@ export default function Home() {
               Be part of our team
               <span className="text-xl">→</span>
             </Link>
+
           </div>
 
-          {/* RIGHT CONTENT - NO IMAGES */}
+          {/* RIGHT CONTENT */}
+
           <div className="relative border-l border-white/15 pl-8 md:pl-14">
+
             <p className="mb-10 text-xs font-bold uppercase tracking-[4px] text-[#DDE3EC]/70">
               What drives us
             </p>
 
             <div className="space-y-10">
+
               <div>
                 <h3 className="font-display text-4xl font-semibold text-white md:text-5xl">
                   Innovation<span className="text-[#B28B36]">.</span>
@@ -464,24 +612,37 @@ export default function Home() {
                   Creating better outcomes together.
                 </p>
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* TECHNOLOGY ECOSYSTEM SECTION */}
+      {/* ==========================================
+          6. TECHNOLOGY ECOSYSTEM
+      ========================================== */}
 
       <section className="relative isolate overflow-hidden bg-[#F3F6FA] px-5 py-16 text-[#071536] md:px-10 md:py-20">
+
         {/* LEFT GOLD DECORATION */}
+
         <div className="pointer-events-none absolute -left-20 top-0 -z-0 h-[540px] w-[180px] rounded-[50%] bg-[#B28B36]/80 blur-[2px]" />
 
         {/* RIGHT GOLD DECORATION */}
+
         <div className="pointer-events-none absolute -right-20 top-0 -z-0 h-[540px] w-[180px] rounded-[50%] bg-[#B28B36]/80 blur-[2px]" />
 
         <div className="relative z-10 mx-auto max-w-[1450px]">
+
           <div className="grid grid-cols-1 items-center gap-7 md:grid-cols-3 md:gap-x-12 md:gap-y-8">
+
             {/* CENTRAL CONTENT */}
+
             <div className="order-first flex min-h-[300px] flex-col items-center justify-center px-2 text-center md:order-none md:col-start-2 md:row-start-2 md:min-h-[280px]">
+
               <p className="mb-5 text-xs font-bold uppercase tracking-[4px] text-[#B28B36]">
                 RulingMind Technologies
               </p>
@@ -504,9 +665,11 @@ export default function Home() {
                 Explore our capabilities
                 <span className="text-xl">→</span>
               </Link>
+
             </div>
 
-            {/* ORACLE - TOP LEFT */}
+            {/* ORACLE */}
+
             <div className="flex justify-center md:col-start-1 md:row-start-1 md:justify-end">
               <div className="flex h-[135px] w-full max-w-[245px] items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="text-[30px] font-bold tracking-tight text-[#c74634]">
@@ -515,7 +678,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* SAP - TOP CENTER */}
+            {/* SAP */}
+
             <div className="flex justify-center md:col-start-2 md:row-start-1">
               <div className="flex h-[135px] w-full max-w-[245px] items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="rounded-md bg-[#087bbd] px-6 py-2 text-[38px] font-extrabold italic text-white">
@@ -524,7 +688,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* GOOGLE CLOUD - TOP RIGHT */}
+            {/* GOOGLE CLOUD */}
+
             <div className="flex justify-center md:col-start-3 md:row-start-1 md:justify-start">
               <div className="flex h-[135px] w-full max-w-[245px] flex-col items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="text-center text-[25px] font-semibold text-[#555]">
@@ -536,9 +701,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* MICROSOFT - MIDDLE LEFT */}
+            {/* MICROSOFT */}
+
             <div className="flex justify-center md:col-start-1 md:row-start-2 md:justify-end">
               <div className="flex h-[135px] w-full max-w-[245px] items-center justify-center gap-3 rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
+
                 <span className="grid grid-cols-2 gap-[3px]">
                   <span className="h-5 w-5 bg-[#f25022]" />
                   <span className="h-5 w-5 bg-[#7fba00]" />
@@ -549,10 +716,12 @@ export default function Home() {
                 <span className="text-[23px] font-semibold text-[#666]">
                   Microsoft
                 </span>
+
               </div>
             </div>
 
-            {/* AWS - MIDDLE RIGHT */}
+            {/* AWS */}
+
             <div className="flex justify-center md:col-start-3 md:row-start-2 md:justify-start">
               <div className="flex h-[135px] w-full max-w-[245px] flex-col items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="text-[42px] font-bold tracking-tight text-[#232f3e]">
@@ -564,7 +733,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* NVIDIA - BOTTOM LEFT */}
+            {/* NVIDIA */}
+
             <div className="flex justify-center md:col-start-1 md:row-start-3 md:justify-end">
               <div className="flex h-[135px] w-full max-w-[245px] items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="bg-[#76b900] px-5 py-3 text-[25px] font-extrabold text-black">
@@ -573,7 +743,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* SERVICENOW - BOTTOM RIGHT */}
+            {/* SERVICENOW */}
+
             <div className="flex justify-center md:col-start-3 md:row-start-3 md:justify-start">
               <div className="flex h-[135px] w-full max-w-[245px] items-center justify-center rounded-[25px] bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2">
                 <span className="text-[27px] font-bold tracking-tight text-[#174b43]">
@@ -581,13 +752,19 @@ export default function Home() {
                 </span>
               </div>
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* 12. CONTACT CTA */}
+      {/* ==========================================
+          7. CONTACT CTA
+      ========================================== */}
 
       <ContactReadySection />
+
     </>
   );
 }

@@ -17,16 +17,45 @@
 }
 
 /* ==========================================
-   GLOBAL STYLES
+   GLOBAL RESET
 ========================================== */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
   scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
   background-color: var(--brand-white);
   color: var(--brand-text);
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   PAGE WIDTH
+========================================== */
+
+#main {
+  width: 100%;
+  min-width: 0;
+}
+
+header,
+footer {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* ==========================================
@@ -64,7 +93,7 @@ a {
     @apply text-[11px] font-extrabold uppercase tracking-[2px] text-[#B28B36];
   }
 
-  /* Primary button */
+  /* PRIMARY BUTTON */
 
   .btn {
     @apply inline-flex items-center justify-center rounded-sm bg-[#071536] px-[19px] py-[13px] font-bold text-white transition duration-300;
@@ -74,7 +103,7 @@ a {
     @apply bg-[#B28B36] text-white;
   }
 
-  /* Secondary button */
+  /* SECONDARY BUTTON */
 
   .btn-outline {
     @apply inline-flex items-center justify-center border border-[#071536] px-[18px] py-3 text-[13px] font-bold text-[#071536] transition duration-300;
@@ -84,43 +113,43 @@ a {
     @apply bg-[#071536] text-white;
   }
 
-  /* Standard section */
+  /* SECTION SPACING */
 
-  .block {
+  .section-block {
     @apply py-[65px] md:py-[90px];
   }
 
-  /* Main heading */
+  /* MAIN HEADING */
 
   .h1 {
     @apply my-5 font-display text-[clamp(42px,5vw,65px)] font-bold leading-[1.06] tracking-[-2px] text-[#071536] md:tracking-[-3px];
   }
 
-  /* Section heading */
+  /* SECTION HEADING */
 
   .h2 {
     @apply my-3.5 font-display text-[clamp(31px,4vw,48px)] font-bold leading-[1.12] tracking-[-1.5px] text-[#071536];
   }
 
-  /* Two column layout */
+  /* TWO COLUMN LAYOUT */
 
   .split {
     @apply grid items-center gap-10 md:grid-cols-2 md:gap-[60px];
   }
 
-  /* Read more links */
+  /* READ MORE LINKS */
 
   .more {
     @apply mt-3 inline-block text-[13px] font-extrabold text-[#B28B36];
   }
 
-  /* Alternate backgrounds */
+  /* ALTERNATE BACKGROUND */
 
   .section-light {
     @apply bg-[#F3F6FA];
   }
 
-  /* Standard cards */
+  /* STANDARD CARDS */
 
   .brand-card {
     @apply rounded-lg border border-[#DDE3EC] bg-white text-[#374151] transition duration-300;
@@ -129,7 +158,6 @@ a {
   .brand-card:hover {
     @apply border-[#B28B36];
   }
-
 }
 
 /* ==========================================
@@ -176,6 +204,7 @@ input,
 textarea,
 select {
   border-color: var(--brand-border);
+  max-width: 100%;
 }
 
 input:focus,
@@ -192,4 +221,72 @@ select:focus {
 ::selection {
   background: var(--brand-navy);
   color: var(--brand-white);
+}
+
+/* ==========================================
+   HEADER BRANDING
+========================================== */
+
+header img {
+  display: block;
+}
+
+header .group-company-branding {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   RESPONSIVE WIDTH FIX
+========================================== */
+
+@media (max-width: 767px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  header,
+  main,
+  footer,
+  #main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .wrap {
+    max-width: 100%;
+  }
+
+  .split {
+    min-width: 0;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header,
+  main,
+  footer {
+    max-width: 100%;
+    min-width: 0;
+  }
 }

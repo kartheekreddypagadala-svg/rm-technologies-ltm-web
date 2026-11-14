@@ -3,18 +3,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CareersCarousel from "@/components/CareersCarousel";
 import Reveal from "@/components/Reveal";
-import { Cards, Intro } from "@/components/ui";
-import { articles, positions, values } from "@/lib/content";
+import { articles } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Careers | RulingMindTech",
   description:
     "Explore career opportunities, internships and professional growth at RulingMindTech.",
 };
-
-/* -------------------------------------------------------
-   CAREER CATEGORIES
-------------------------------------------------------- */
 
 const CORAL = "#B28B36";
 
@@ -25,10 +20,6 @@ const ways = [
   { title: "Remote and hybrid", slug: "remote-and-hybrid" },
   { title: "Freelance and contract", slug: "freelance-and-contract" },
 ];
-
-/* -------------------------------------------------------
-   LIFE AT RULINGMINDTECH
-------------------------------------------------------- */
 
 const highlights = [
   {
@@ -45,28 +36,16 @@ const highlights = [
   },
 ];
 
-/* -------------------------------------------------------
-   BLOG IMAGES
-------------------------------------------------------- */
-
 const insightImages = [
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80",
 ];
 
-/* -------------------------------------------------------
-   DOTTED BACKGROUND
-------------------------------------------------------- */
-
 const dots = (color: string) => ({
   backgroundImage: `radial-gradient(${color} 1.2px, transparent 1.6px)`,
   backgroundSize: "7px 7px",
 });
-
-/* -------------------------------------------------------
-   CAREERS PAGE
-------------------------------------------------------- */
 
 export default function Careers() {
   const insightItems = articles.map((article, index) => ({
@@ -79,13 +58,16 @@ export default function Careers() {
   return (
     <>
       {/* =================================================
-          1. HERO SECTION
+          1. CAREERS HERO SECTION
       ================================================= */}
 
-      <section className="relative overflow-hidden bg-[#071536] text-white">
+      <section className="relative isolate min-h-[680px] overflow-hidden bg-[#071536] text-white md:min-h-[780px]">
+
+        {/* GOLD DOT PATTERN */}
+
         <div
           aria-hidden="true"
-          className="absolute bottom-0 right-0 h-[75%] w-[85%] opacity-90 md:w-[70%]"
+          className="pointer-events-none absolute bottom-0 right-0 z-0 h-[75%] w-[100%] opacity-90 md:w-[75%]"
           style={{
             ...dots(CORAL),
             clipPath:
@@ -93,36 +75,69 @@ export default function Careers() {
           }}
         />
 
-        <div className="wrap relative py-16 md:py-24">
-          <h1 className="font-display text-[clamp(48px,8vw,96px)] font-bold leading-[1.02] tracking-[-3px]">
-            Grow with
-            <br />
-            <span className="mr-3 inline-block h-[0.7em] w-[0.7em] rounded-[50%_50%_50%_10%] bg-white align-baseline" />
-            RulingMind
+        {/* HERO CONTENT */}
+
+        <div className="wrap relative z-10 flex min-h-[680px] flex-col justify-center py-20 md:min-h-[780px] md:py-24">
+
+          {/* MAIN HEADING */}
+
+          <h1
+            className="!m-0 !block !text-white font-display text-[clamp(52px,8vw,108px)] font-bold leading-[1.05] tracking-[-3px] md:tracking-[-5px]"
+            style={{
+              color: "#FFFFFF",
+              opacity: 1,
+              visibility: "visible",
+            }}
+          >
+            <span className="block !text-white">
+              Grow with
+            </span>
+
+            <span className="mt-1 flex flex-wrap items-center gap-3 !text-white sm:gap-5">
+
+              {/* WHITE BRAND SYMBOL */}
+
+              <span
+                aria-hidden="true"
+                className="inline-block h-[0.7em] w-[0.7em] shrink-0 rounded-[50%_50%_50%_10%] bg-white"
+              />
+
+              <span className="!text-white" style={{ color: "#FFFFFF" }}>
+                RulingMind
+              </span>
+
+            </span>
           </h1>
 
-          <p className="mt-24 text-lg font-medium md:mt-36">
+          {/* DESCRIPTION */}
+
+          <p
+            className="mt-20 max-w-[600px] text-base font-medium leading-7 !text-white sm:text-lg md:mt-32"
+            style={{ color: "#FFFFFF" }}
+          >
             Your first big project could start here.
           </p>
 
+          {/* OPEN ROLES BUTTON */}
+
           <Link
             href="#open-positions"
-            className="mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold text-white transition hover:brightness-110"
-            style={{ background: CORAL }}
+            className="mt-6 inline-flex w-fit items-center gap-3 rounded-full bg-[#B28B36] px-7 py-4 text-[15px] font-semibold text-white transition duration-300 hover:bg-white hover:text-[#071536]"
           >
             See open roles
             <span aria-hidden="true">→</span>
           </Link>
+
         </div>
       </section>
 
       {/* =================================================
           2. CAREER CATEGORIES
-          Each category opens a separate tab.
       ================================================= */}
 
-      <section className="block bg-white">
+      <section id="open-positions" className="block bg-white scroll-mt-24">
         <div className="wrap grid gap-12 md:grid-cols-2">
+
           <Reveal>
             <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-1.5px] text-[#071536]">
               Work the way
@@ -171,14 +186,16 @@ export default function Careers() {
               ))}
             </ul>
           </Reveal>
+
         </div>
       </section>
 
       {/* =================================================
-          5. LIFE AT RULINGMINDTECH
+          3. LIFE AT RULINGMINDTECH
       ================================================= */}
 
       <section className="relative overflow-hidden bg-[#F3F6FA] py-20">
+
         <div
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-[18%] opacity-60"
@@ -198,6 +215,7 @@ export default function Careers() {
         />
 
         <div className="wrap relative text-center">
+
           <h2 className="font-display text-[clamp(30px,4vw,48px)] font-medium tracking-[-1px] text-[#071536]">
             Life at RulingMindTech
           </h2>
@@ -226,17 +244,20 @@ export default function Careers() {
           >
             Meet the company
           </Link>
+
         </div>
       </section>
 
       {/* =================================================
-          6. INSIGHTS HUB
+          4. INSIGHTS HUB
       ================================================= */}
 
       <section className="bg-[#071536] py-20 text-white">
         <div className="wrap">
+
           <div className="mb-12 flex flex-wrap items-center justify-between gap-5">
-            <h2 className="font-display text-[clamp(36px,5vw,60px)] font-medium tracking-[-1.5px]">
+
+            <h2 className="font-display text-[clamp(36px,5vw,60px)] font-medium tracking-[-1.5px] !text-white">
               From our blog
             </h2>
 
@@ -246,17 +267,20 @@ export default function Careers() {
             >
               See all articles →
             </Link>
+
           </div>
 
           <CareersCarousel items={insightItems} />
+
         </div>
       </section>
 
       {/* =================================================
-          7. EXPLORE MORE
+          5. EXPLORE MORE
       ================================================= */}
 
       <section className="relative overflow-hidden bg-[#F3F6FA] py-20">
+
         <div
           aria-hidden="true"
           className="absolute right-0 top-0 h-full w-[45%] opacity-70"
@@ -268,11 +292,13 @@ export default function Careers() {
         />
 
         <div className="wrap relative">
+
           <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium tracking-[-1.5px] text-[#071536]">
             More about us
           </h2>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
+
             {[
               {
                 title: "Who we are",
@@ -294,6 +320,7 @@ export default function Careers() {
                 key={item.title}
                 className="flex min-h-[260px] flex-col justify-between rounded-3xl border border-[#DDE3EC] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#B28B36] hover:shadow-lg"
               >
+
                 <div>
                   <h3 className="font-display text-[32px] font-medium text-[#071536]">
                     {item.title}
@@ -310,17 +337,20 @@ export default function Careers() {
                 >
                   → Learn more
                 </Link>
+
               </div>
             ))}
+
           </div>
         </div>
       </section>
 
       {/* =================================================
-          8. FINAL CAREERS CTA
+          6. FINAL CAREERS CTA
       ================================================= */}
 
       <section className="relative overflow-hidden bg-[#071536] text-white">
+
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 h-[30%]"
@@ -332,6 +362,7 @@ export default function Careers() {
         />
 
         <div className="wrap relative grid items-center gap-10 py-20 md:grid-cols-[1fr_1.6fr]">
+
           <div
             role="img"
             aria-label="Team discussing ideas"
@@ -342,11 +373,12 @@ export default function Careers() {
           />
 
           <div>
+
             <p className="text-xs font-bold uppercase tracking-[2px] text-[#B28B36]">
               YOUR NEXT CHAPTER
             </p>
 
-            <h2 className="mt-4 font-display text-[clamp(28px,3.5vw,42px)] font-medium">
+            <h2 className="mt-4 font-display text-[clamp(28px,3.5vw,42px)] font-medium !text-white">
               Your next chapter starts here.
             </h2>
 
@@ -363,6 +395,7 @@ export default function Careers() {
               Contact our team
               <span aria-hidden="true">→</span>
             </Link>
+
           </div>
         </div>
       </section>

@@ -2,7 +2,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -32,20 +31,22 @@ const aboutLinks = [
 function MenuLink({
   href,
   children,
+  onClick,
 }: {
   href: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className="group flex items-start justify-between gap-3 py-2.5 text-[15px] font-semibold leading-6 text-white/95 transition-colors hover:text-[#B28B36]"
     >
       <span>{children}</span>
-
       <ArrowUpRight
         size={14}
-        className="mt-1 shrink-0 text-[#B28B36] opacity-0 transition group-hover:opacity-100"
+        className="mt-1 shrink-0 opacity-0 transition group-hover:opacity-100"
       />
     </Link>
   );
@@ -82,6 +83,10 @@ export default function Header() {
     setMenu((current) => (current === key ? null : key));
   };
 
+  const closeMobile = () => {
+    setMobile(false);
+  };
+
   const navButton = (
     key: Exclude<MenuKey, null>,
     label: string
@@ -92,10 +97,10 @@ export default function Header() {
       aria-haspopup="true"
       onMouseEnter={() => setMenu(key)}
       onClick={() => toggle(key)}
-      className={`flex h-[74px] items-center gap-2 border-b-2 px-0 text-[15px] font-semibold transition ${
+      className={`flex h-[108px] shrink-0 items-center gap-2 whitespace-nowrap border-b-[3px] px-0 text-[15px] font-semibold transition ${
         menu === key
-          ? "border-[#B28B36] text-[#B28B36]"
-          : "border-transparent text-white hover:border-[#B28B36] hover:text-[#B28B36]"
+          ? "border-white text-white"
+          : "border-transparent text-white hover:border-white hover:text-white/80"
       }`}
     >
       {label}
@@ -110,118 +115,147 @@ export default function Header() {
   );
 
   const panelClass =
-    "absolute left-1/2 top-full z-50 w-[min(1240px,calc(100vw-64px))] -translate-x-1/2 rounded-[20px] border border-[#DDE3EC] bg-[#071536] px-10 py-8 text-white shadow-[0_28px_80px_rgba(0,0,0,.3)] md:px-12 md:py-9";
+    "absolute left-1/2 top-full z-[120] w-[min(1240px,calc(100vw-40px))] -translate-x-1/2 rounded-b-[18px] border border-white/10 bg-[#071536] px-8 py-8 text-white shadow-[0_28px_80px_rgba(0,0,0,.3)] md:px-12 md:py-9";
 
   return (
     <header
-      className="sticky top-0 z-50 bg-[#071536] text-white"
+      className="sticky top-0 z-[100] w-full bg-[#071936] text-white"
       onMouseLeave={() => setMenu(null)}
     >
-      {/* TOP SEARCH BAR */}
-      <div className="h-[34px] border-b border-white/10 bg-[#071536]">
-        <div className="mx-auto flex h-full w-[min(1540px,calc(100%-48px))] items-center justify-end">
-          <button
-            onClick={() => {
-              setSearch(true);
-              setMenu(null);
-            }}
-            className="flex items-center gap-2 text-[13px] font-semibold text-white/90 transition hover:text-[#B28B36]"
-          >
-            <Search size={15} />
-            Search
-          </button>
-        </div>
-      </div>
+      {/* MAIN HEADER */}
 
-      {/* MAIN NAVIGATION */}
       <div className="relative border-b border-white/10">
-        <div className="mx-auto flex h-[94px] w-[min(1540px,calc(100%-48px))] items-center justify-between gap-8">
 
-          {/* OFFICIAL BRAND LOGO */}
+        <div className="mx-auto flex h-[72px] w-full items-center justify-between gap-1.5 px-3 sm:h-[88px] sm:gap-3 sm:px-5 xl:h-[108px] xl:w-[calc(100%-64px)] xl:gap-5">
+
+          {/* MAIN COMPANY LOGO */}
+
           <Link
             href="/"
             aria-label="RulingMind Technologies home"
             onMouseEnter={() => setMenu(null)}
-            className="flex shrink-0 items-center"
+            className="flex min-w-0 shrink-0 items-center"
           >
-            <Image
+            <img
               src="/RULINGMIND_Technologies_Final_Locked_Logo.png"
               alt="RulingMind Technologies"
-              width={300}
-              height={100}
-              priority
-              className="h-auto w-[190px] object-contain brightness-0 invert sm:w-[235px] lg:w-[260px]"
+              className="h-auto w-[126px] object-contain sm:w-[190px] lg:w-[220px] xl:w-[245px] 2xl:w-[270px]"
+              style={{
+                filter: "brightness(0) invert(1)",
+              }}
             />
           </Link>
 
           {/* DESKTOP NAVIGATION */}
+
           <nav
-            className="hidden h-full items-center gap-8 lg:flex"
+            className="hidden h-full flex-1 items-center justify-center gap-5 xl:flex 2xl:gap-8"
             aria-label="Primary navigation"
           >
             {navButton("what", "Services")}
 
             {navButton("industries", "Industries")}
 
-            {navButton("about", "About")}
+            {navButton("about", "About us")}
 
             <Link
               href="/careers"
               onMouseEnter={() => setMenu(null)}
-              className="flex h-[74px] items-center border-b-2 border-transparent text-[15px] font-semibold text-white transition hover:border-[#B28B36] hover:text-[#B28B36]"
+              className="flex h-[108px] shrink-0 items-center whitespace-nowrap border-b-[3px] border-transparent text-[15px] font-semibold text-white transition hover:border-white hover:text-white/80"
             >
               Careers
             </Link>
           </nav>
 
           {/* RIGHT SIDE */}
-          <div className="flex shrink-0 items-center gap-3 sm:gap-5">
 
-            <div className="hidden items-center gap-3 border-l border-white/25 pl-5 xl:flex">
-              <span className="grid h-8 w-8 place-items-center rounded-full border border-[#B28B36] text-[11px] font-bold text-[#B28B36]">
-                RM
-              </span>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4 xl:gap-5">
 
-              <span className="max-w-[112px] text-[11px] leading-[1.35] text-white/80">
-                RulingMind
-                <br />
-                Group Company
-              </span>
+            {/* GROUP COMPANY BRANDING */}
+
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+
+              <img
+                src="/assets/rm-monogram.png"
+                alt="RulingMind RM"
+                className="h-[25px] w-[36px] shrink-0 object-contain brightness-0 invert sm:h-[38px] sm:w-[58px] xl:h-[42px] xl:w-[65px]"
+              />
+
+              <span
+                aria-hidden="true"
+                className="h-[29px] w-px shrink-0 bg-white sm:h-[40px] sm:w-[2px] xl:h-[46px]"
+              />
+
+              <div className="flex min-w-0 shrink-0 flex-col items-start justify-center gap-0 whitespace-nowrap text-white sm:gap-[3px]">
+
+                <span className="text-[8px] font-bold leading-[11px] sm:text-[11px] sm:leading-[15px] xl:text-[13px] xl:leading-[18px]">
+                  A RULINGMIND
+                </span>
+
+                <span className="text-[8px] font-medium leading-[11px] sm:text-[11px] sm:leading-[15px] xl:text-[13px] xl:leading-[18px]">
+                  Group company
+                </span>
+
+              </div>
             </div>
 
+            {/* SEARCH BUTTON */}
+
+            <button
+              type="button"
+              aria-label="Search"
+              onClick={() => {
+                setSearch(true);
+                setMenu(null);
+                setMobile(false);
+              }}
+              className="hidden h-10 w-10 shrink-0 items-center justify-center text-white transition hover:text-[#B28B36] 2xl:flex"
+            >
+              <Search size={20} />
+            </button>
+
             {/* CONTACT BUTTON */}
+
             <Link
               href="/contact"
               onMouseEnter={() => setMenu(null)}
-              className="rounded-full border border-[#B28B36] bg-[#B28B36] px-6 py-3 text-[14px] font-semibold text-[#071536] transition hover:border-white hover:bg-white hover:text-[#071536] sm:px-7"
+              className="hidden h-[42px] shrink-0 items-center justify-center whitespace-nowrap rounded-full border-2 border-white px-4 text-xs font-semibold text-white transition hover:bg-white hover:text-[#071936] xl:inline-flex xl:h-[50px] xl:px-7 xl:text-sm"
             >
               Contact us
-              <ArrowUpRight className="ml-1 inline-block" size={15} />
             </Link>
 
             {/* MOBILE MENU BUTTON */}
+
             <button
-              className="p-2 text-white transition hover:text-[#B28B36] lg:hidden"
+              type="button"
+              className="flex h-10 w-10 shrink-0 items-center justify-center text-white transition hover:text-[#B28B36] xl:hidden"
               aria-label={mobile ? "Close menu" : "Open menu"}
+              aria-expanded={mobile}
+              aria-controls="mobile-navigation"
               onClick={() => {
-                setMobile(!mobile);
+                setMobile((current) => !current);
                 setMenu(null);
               }}
             >
-              {mobile ? <X size={24} /> : <Menu size={24} />}
+              {mobile ? (
+                <X size={26} />
+              ) : (
+                <Menu size={26} />
+              )}
             </button>
+
           </div>
         </div>
 
-        {/* WHAT WE DO MEGA MENU */}
+        {/* SERVICES MEGA MENU - DESKTOP */}
+
         {menu === "what" && (
           <div
-            className={panelClass}
+            className={`${panelClass} hidden xl:block`}
             onMouseEnter={() => setMenu("what")}
           >
             <div className="grid gap-9 md:grid-cols-[1fr_1fr_1fr_250px]">
 
-              {/* SERVICES */}
               <div>
                 <p className="mb-6 text-[13px] font-semibold uppercase tracking-[1px] text-[#B28B36]">
                   Services
@@ -241,7 +275,6 @@ export default function Header() {
                 </MenuLink>
               </div>
 
-              {/* ENGINEERING AND DIGITAL */}
               <div>
                 <p className="mb-6 text-[13px] font-semibold uppercase tracking-[1px] text-[#B28B36]">
                   Engineering & Digital
@@ -261,7 +294,6 @@ export default function Header() {
                   ))}
               </div>
 
-              {/* SOLUTIONS */}
               <div>
                 <p className="mb-6 text-[13px] font-semibold uppercase tracking-[1px] text-[#B28B36]">
                   Solutions
@@ -281,14 +313,14 @@ export default function Header() {
                 </MenuLink>
               </div>
 
-              {/* CONSULTATION PANEL */}
-              <div className="flex flex-col justify-between rounded-[15px] border border-[#DDE3EC]/20 bg-[#0B1D42] p-6">
+              <div className="flex flex-col justify-between rounded-[15px] border border-white/20 bg-[#0B1D42] p-6">
+
                 <div>
                   <p className="text-[11px] font-extrabold uppercase tracking-[2px] text-[#B28B36]">
                     Innovate. Transform. Grow.
                   </p>
 
-                  <h3 className="mt-4 font-display text-[23px] font-bold leading-tight text-white">
+                  <h3 className="mt-4 text-[23px] font-bold leading-tight text-white">
                     Technology that moves your business forward.
                   </h3>
 
@@ -299,20 +331,22 @@ export default function Header() {
 
                 <Link
                   href="/contact"
-                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-sm bg-[#B28B36] px-5 py-3 text-sm font-bold text-[#071536] transition hover:bg-white hover:text-[#071536]"
+                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-sm bg-[#B28B36] px-5 py-3 text-sm font-bold text-[#071536] transition hover:bg-white"
                 >
                   Talk to an expert
                   <ArrowUpRight size={15} />
                 </Link>
+
               </div>
             </div>
           </div>
         )}
 
-        {/* INDUSTRIES MEGA MENU */}
+        {/* INDUSTRIES MEGA MENU - DESKTOP */}
+
         {menu === "industries" && (
           <div
-            className={panelClass}
+            className={`${panelClass} hidden xl:block`}
             onMouseEnter={() => setMenu("industries")}
           >
             <p className="mb-7 text-[13px] font-semibold uppercase tracking-[1px] text-[#B28B36]">
@@ -340,10 +374,11 @@ export default function Header() {
           </div>
         )}
 
-        {/* ABOUT US MEGA MENU */}
+        {/* ABOUT US MEGA MENU - DESKTOP */}
+
         {menu === "about" && (
           <div
-            className="absolute left-1/2 top-full z-50 w-[min(840px,calc(100vw-40px))] -translate-x-1/2 rounded-[20px] border border-[#DDE3EC] bg-[#071536] px-8 py-9 text-white shadow-[0_28px_80px_rgba(0,0,0,.3)] sm:px-11 sm:py-10"
+            className="absolute left-1/2 top-full z-[120] hidden w-[min(840px,calc(100vw-40px))] -translate-x-1/2 rounded-b-[18px] border border-white/10 bg-[#071536] px-8 py-9 text-white shadow-[0_28px_80px_rgba(0,0,0,.3)] sm:px-11 sm:py-10 xl:block"
             onMouseEnter={() => setMenu("about")}
           >
             <p className="mb-7 text-[13px] font-bold uppercase tracking-[1.5px] text-[#B28B36]">
@@ -362,91 +397,113 @@ export default function Header() {
             </div>
           </div>
         )}
+
       </div>
 
-      {/* MOBILE NAVIGATION */}
+      {/* COMPLETE MOBILE NAVIGATION */}
+
       {mobile && (
         <nav
-          className="max-h-[calc(100vh-128px)] overflow-y-auto border-t border-white/10 bg-[#071536] px-5 pb-7 lg:hidden"
+          id="mobile-navigation"
+          className="absolute left-0 top-full z-[130] max-h-[calc(100dvh-72px)] w-full overflow-y-auto overscroll-contain border-t border-white/10 bg-[#071936] px-5 pb-8 pt-2 shadow-2xl sm:px-7 xl:hidden"
           aria-label="Mobile navigation"
         >
-          {/* WHAT WE DO */}
-          <details className="border-b border-white/10">
-            <summary className="cursor-pointer py-4 text-sm font-semibold transition hover:text-[#B28B36]">
-              What we do
+
+          <button
+            type="button"
+            onClick={() => {
+              setSearch(true);
+              setMobile(false);
+            }}
+            className="flex w-full items-center gap-3 border-b border-white/15 py-4 text-left text-sm font-medium text-white/80 hover:text-[#B28B36]"
+          >
+            <Search size={18} />
+            Search
+          </button>
+
+          {/* SERVICES */}
+
+          <details className="group border-b border-white/15">
+            <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-base font-semibold text-white">
+              Services
+              <ChevronDown
+                size={19}
+                className="transition-transform group-open:rotate-180"
+              />
             </summary>
 
-            <div className="grid gap-5 pb-5 pl-3 sm:grid-cols-2">
-              <div>
-                <Link
-                  href="/services"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#B28B36]"
-                >
-                  Services
-                </Link>
-
-                {services.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/services/${item.slug}`}
-                    className="block py-2 text-sm text-white/75 transition hover:text-[#B28B36]"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
-
-              <div>
-                <Link
-                  href="/solutions"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#B28B36]"
-                >
-                  Solutions
-                </Link>
-
-                {solutions.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/solutions/${item.slug}`}
-                    className="block py-2 text-sm text-white/75 transition hover:text-[#B28B36]"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </details>
-
-          {/* INDUSTRIES */}
-          <details className="border-b border-white/10">
-            <summary className="cursor-pointer py-4 text-sm font-semibold transition hover:text-[#B28B36]">
-              Industries we serve
-            </summary>
-
-            <div className="pb-4 pl-3">
-              {industries.map((item) => (
+            <div className="grid gap-1 pb-5 pl-3">
+              {services.map((item) => (
                 <Link
                   key={item.slug}
-                  href={`/industries/${item.slug}`}
-                  className="block py-2 text-sm text-white/75 transition hover:text-[#B28B36]"
+                  href={`/services/${item.slug}`}
+                  onClick={closeMobile}
+                  className="block py-2.5 text-sm text-white/75 transition hover:text-[#B28B36]"
                 >
                   {item.title}
                 </Link>
               ))}
+
+              <Link
+                href="/services"
+                onClick={closeMobile}
+                className="mt-2 text-sm font-bold text-[#B28B36]"
+              >
+                Explore all services →
+              </Link>
+            </div>
+          </details>
+
+          {/* INDUSTRIES */}
+
+          <details className="group border-b border-white/15">
+            <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-base font-semibold text-white">
+              Industries
+              <ChevronDown
+                size={19}
+                className="transition-transform group-open:rotate-180"
+              />
+            </summary>
+
+            <div className="grid gap-1 pb-5 pl-3">
+              {industries.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/industries/${item.slug}`}
+                  onClick={closeMobile}
+                  className="block py-2.5 text-sm text-white/75 transition hover:text-[#B28B36]"
+                >
+                  {item.title}
+                </Link>
+              ))}
+
+              <Link
+                href="/industries"
+                onClick={closeMobile}
+                className="mt-2 text-sm font-bold text-[#B28B36]"
+              >
+                Explore all industries →
+              </Link>
             </div>
           </details>
 
           {/* ABOUT US */}
-          <details className="border-b border-white/10">
-            <summary className="cursor-pointer py-4 text-sm font-semibold transition hover:text-[#B28B36]">
+
+          <details className="group border-b border-white/15">
+            <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-base font-semibold text-white">
               About us
+              <ChevronDown
+                size={19}
+                className="transition-transform group-open:rotate-180"
+              />
             </summary>
 
-            <div className="pb-4 pl-3">
+            <div className="grid gap-1 pb-5 pl-3">
               {aboutLinks.map(([href, title]) => (
                 <Link
                   key={href}
                   href={href}
+                  onClick={closeMobile}
                   className="block py-2.5 text-sm leading-6 text-white/75 transition hover:text-[#B28B36]"
                 >
                   {title}
@@ -455,30 +512,70 @@ export default function Header() {
             </div>
           </details>
 
+          {/* SOLUTIONS */}
+
+          <details className="group border-b border-white/15">
+            <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-base font-semibold text-white">
+              Solutions
+              <ChevronDown
+                size={19}
+                className="transition-transform group-open:rotate-180"
+              />
+            </summary>
+
+            <div className="grid gap-1 pb-5 pl-3">
+              {solutions.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/solutions/${item.slug}`}
+                  onClick={closeMobile}
+                  className="block py-2.5 text-sm text-white/75 transition hover:text-[#B28B36]"
+                >
+                  {item.title}
+                </Link>
+              ))}
+
+              <Link
+                href="/solutions"
+                onClick={closeMobile}
+                className="mt-2 text-sm font-bold text-[#B28B36]"
+              >
+                Explore all solutions →
+              </Link>
+            </div>
+          </details>
+
           {/* CAREERS */}
+
           <Link
             href="/careers"
-            className="block border-b border-white/10 py-4 text-sm font-semibold transition hover:text-[#B28B36]"
+            onClick={closeMobile}
+            className="block border-b border-white/15 py-5 text-base font-semibold text-white transition hover:text-[#B28B36]"
           >
             Careers
           </Link>
 
           {/* CONTACT */}
+
           <Link
             href="/contact"
-            className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#B28B36] bg-[#B28B36] px-6 py-3 text-sm font-semibold text-[#071536] transition hover:border-white hover:bg-white"
+            onClick={closeMobile}
+            className="mt-6 flex h-[48px] w-full items-center justify-center gap-2 rounded-full border-2 border-white text-sm font-semibold text-white transition hover:bg-white hover:text-[#071936]"
           >
             Contact us
-            <ArrowUpRight size={15} />
+            <ArrowUpRight size={16} />
           </Link>
+
         </nav>
       )}
 
       {/* SEARCH OVERLAY */}
+
       <SearchOverlay
         open={search}
         onClose={() => setSearch(false)}
       />
+
     </header>
   );
 }
