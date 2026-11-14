@@ -15,10 +15,10 @@ const icons = {
 };
 
 const statStyles = [
-  "bg-[#9aa0a6] text-white",
-  "text-ink",
-  "bg-[#f7ffc8] text-ink",
-  "bg-[#1b1b1b] text-white",
+  "bg-[#374151] text-white",
+  "text-white",
+  "bg-[#B28B36] text-white",
+  "bg-[#071536] text-white",
 ];
 
 export default function About() {
@@ -31,27 +31,27 @@ export default function About() {
         image="/assets/hero-innovation.png"
       />
 
-      <section className="relative overflow-hidden bg-[#e9e9e9] py-24">
+      <section className="relative overflow-hidden bg-[#F3F6FA] py-24">
         <Swoosh side="left" />
         <div className="wrap relative">
           <div className="md:ml-[40%]">
-            <h2 className="font-display text-[clamp(36px,5vw,64px)] font-medium leading-[1.05] tracking-[-2px]">
+            <h2 className="font-display text-[clamp(36px,5vw,64px)] font-medium leading-[1.05] tracking-[-2px] text-[#071536]">
               Where engineering<br />
               <span style={{ color: CORAL }}>meets business</span>
             </h2>
-            <p className="mt-8 max-w-[640px] text-lg leading-[1.7]">
+            <p className="mt-8 max-w-[640px] text-lg leading-[1.7] text-[#374151]">
               We sit between the people who run a business and the tools that could help it grow. Our job is to listen first, then build technology that fits.
             </p>
-            <p className="mt-4 max-w-[640px] text-lg leading-[1.7]">
+            <p className="mt-4 max-w-[640px] text-lg leading-[1.7] text-[#374151]">
               Cloud, AI, software, data and security are all handled by one team, so you do not have to coordinate five suppliers.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#e9e9e9] pb-24">
+      <section className="bg-[#F3F6FA] pb-24">
         <div className="wrap grid gap-10 md:grid-cols-[1fr_2fr]">
-          <h2 className="font-display text-[clamp(34px,4vw,52px)] font-medium leading-[1.1] tracking-[-1.5px]">
+          <h2 className="font-display text-[clamp(34px,4vw,52px)] font-medium leading-[1.1] tracking-[-1.5px] text-[#071536]">
             What we<br />stand for
           </h2>
           <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
@@ -62,8 +62,8 @@ export default function About() {
                   <span style={{ color: CORAL }}>
                     <Icon size={44} strokeWidth={1.4} />
                   </span>
-                  <h3 className="mt-5 font-display text-[26px] font-medium">{v.title}</h3>
-                  <p className="mt-3 max-w-[360px] leading-[1.6]">{v.text}</p>
+                  <h3 className="mt-5 font-display text-[26px] font-medium text-[#071536]">{v.title}</h3>
+                  <p className="mt-3 max-w-[360px] leading-[1.6] text-[#374151]">{v.text}</p>
                 </div>
               );
             })}
@@ -71,23 +71,23 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#1b1b1b] py-24 text-white">
+      <section className="bg-[#071536] py-24 text-white">
         <div className="wrap">
           <h2 className="text-center font-display text-[clamp(34px,4.5vw,58px)] font-medium tracking-[-1.5px]">
             Leadership
           </h2>
-          <p className="mx-auto mt-3 max-w-[520px] text-center text-[#b5b5b5]">
+          <p className="mx-auto mt-3 max-w-[520px] text-center text-[#DDE3EC]">
             Add names, photos and short bios in lib/content.ts (leadership).
           </p>
           <div className="mx-auto mt-12 grid max-w-[1000px] gap-6 md:grid-cols-3">
             {leadership.map((p) => (
-              <div key={p.text} className="rounded-3xl bg-[#8c8c8c] p-4">
-                <div className="grid h-[260px] place-items-center rounded-2xl bg-[#6f6f6f] font-display text-6xl text-white/70">
+              <div key={p.text} className="rounded-3xl border border-white/10 bg-[#0D2045] p-4">
+                <div className="grid h-[260px] place-items-center rounded-2xl bg-[#071536] font-display text-6xl text-[#B28B36]">
                   RM
                 </div>
                 <div className="px-2 pb-2 pt-5">
-                  <div className="font-display text-xl font-medium">{p.title}</div>
-                  <div className="text-sm text-white/85">{p.text}</div>
+                  <div className="font-display text-xl font-medium text-white">{p.title}</div>
+                  <div className="text-sm text-[#DDE3EC]">{p.text}</div>
                 </div>
               </div>
             ))}
@@ -98,10 +98,10 @@ export default function About() {
       <section className="block">
         <div className="wrap grid gap-12 md:grid-cols-[1fr_1.2fr]">
           <div>
-            <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.05] tracking-[-2px]">
+            <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.05] tracking-[-2px] text-[#071536]">
               Small team. Big ambition.
             </h2>
-            <p className="mt-8 max-w-[520px] text-lg leading-[1.75] text-[#444]">
+            <p className="mt-8 max-w-[520px] text-lg leading-[1.75] text-[#374151]">
               We are a young company and we like it that way. Decisions are quick, everyone talks to customers, and every project gets senior attention. We pair modern cloud platforms with practical AI and careful security.
             </p>
           </div>
@@ -143,10 +143,10 @@ export default function About() {
             style={{ backgroundImage: `url('${img("photo-1522071820081-009f0129c71c")}')` }}
           />
           <div>
-            <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.08] tracking-[-1.5px]">
+            <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.08] tracking-[-1.5px] text-[#071536]">
               Good work starts with good people.
             </h2>
-            <p className="mt-8 text-lg leading-[1.8] text-[#333]">
+            <p className="mt-8 text-lg leading-[1.8] text-[#374151]">
               We are building a team where people share ideas freely, learn from each other and take pride in what they ship. If you like solving real problems with kind, curious colleagues, you will fit right in.
             </p>
             <div className="mt-8">

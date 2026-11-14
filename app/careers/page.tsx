@@ -16,7 +16,7 @@ export const metadata: Metadata = {
    CAREER CATEGORIES
 ------------------------------------------------------- */
 
-const CORAL = "#f2553f";
+const CORAL = "#B28B36";
 
 const ways = [
   { title: "Full-time roles", slug: "full-time-roles" },
@@ -82,7 +82,7 @@ export default function Careers() {
           1. HERO SECTION
       ================================================= */}
 
-      <section className="relative overflow-hidden bg-black text-white">
+      <section className="relative overflow-hidden bg-[#071536] text-white">
         <div
           aria-hidden="true"
           className="absolute bottom-0 right-0 h-[75%] w-[85%] opacity-90 md:w-[70%]"
@@ -121,16 +121,16 @@ export default function Careers() {
           Each category opens a separate tab.
       ================================================= */}
 
-      <section className="block">
+      <section className="block bg-white">
         <div className="wrap grid gap-12 md:grid-cols-2">
           <Reveal>
-            <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-1.5px]">
+            <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium leading-[1.1] tracking-[-1.5px] text-[#071536]">
               Work the way
               <br />
               you work best.
             </h2>
 
-            <p className="mt-8 max-w-[460px] text-lg leading-[1.7] text-muted">
+            <p className="mt-8 max-w-[460px] text-lg leading-[1.7] text-[#374151]">
               Whether you want a first job, an internship or a flexible
               contract, there is a place to start. Explore opportunities
               and find the right path for your career.
@@ -142,27 +142,27 @@ export default function Careers() {
               {ways.map((item, index) => (
                 <li
                   key={item.slug}
-                  className="border-b border-[#e3e8ee] first:border-t"
+                  className="border-b border-[#DDE3EC] first:border-t"
                 >
                   <Link
                     href={`/careers/opportunities/${item.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between py-6 transition hover:text-brand"
+                    className="group flex items-center justify-between py-6 transition hover:text-[#B28B36]"
                   >
                     <span className="flex items-baseline gap-6">
-                      <span className="text-lg text-muted">
+                      <span className="text-lg text-[#6B7280]">
                         {String(index + 1).padStart(2, "0")}
                       </span>
 
-                      <span className="font-display text-[clamp(26px,3vw,38px)] font-medium">
+                      <span className="font-display text-[clamp(26px,3vw,38px)] font-medium text-[#071536] transition group-hover:text-[#B28B36]">
                         {item.title}
                       </span>
                     </span>
 
                     <span
                       aria-hidden="true"
-                      className="text-2xl transition group-hover:translate-x-1"
+                      className="text-2xl text-[#071536] transition group-hover:translate-x-1 group-hover:text-[#B28B36]"
                     >
                       ↗
                     </span>
@@ -174,13 +174,11 @@ export default function Careers() {
         </div>
       </section>
 
-      
-
       {/* =================================================
           5. LIFE AT RULINGMINDTECH
       ================================================= */}
 
-      <section className="relative overflow-hidden bg-[#e9e9e9] py-20">
+      <section className="relative overflow-hidden bg-[#F3F6FA] py-20">
         <div
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-[18%] opacity-60"
@@ -200,7 +198,7 @@ export default function Careers() {
         />
 
         <div className="wrap relative text-center">
-          <h2 className="font-display text-[clamp(30px,4vw,48px)] font-medium tracking-[-1px]">
+          <h2 className="font-display text-[clamp(30px,4vw,48px)] font-medium tracking-[-1px] text-[#071536]">
             Life at RulingMindTech
           </h2>
 
@@ -208,13 +206,13 @@ export default function Careers() {
             {highlights.map((highlight) => (
               <div
                 key={highlight.year}
-                className="rounded-3xl bg-white p-6"
+                className="rounded-3xl border border-[#DDE3EC] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-[#B28B36] hover:shadow-lg"
               >
-                <div className="text-sm font-bold text-ink">
+                <div className="text-sm font-bold text-[#071536]">
                   {highlight.year}
                 </div>
 
-                <div className="mt-2 text-[17px] text-muted">
+                <div className="mt-2 text-[17px] text-[#374151]">
                   {highlight.text}
                 </div>
               </div>
@@ -235,7 +233,7 @@ export default function Careers() {
           6. INSIGHTS HUB
       ================================================= */}
 
-      <section className="bg-[#1b1b1b] py-20 text-white">
+      <section className="bg-[#071536] py-20 text-white">
         <div className="wrap">
           <div className="mb-12 flex flex-wrap items-center justify-between gap-5">
             <h2 className="font-display text-[clamp(36px,5vw,60px)] font-medium tracking-[-1.5px]">
@@ -244,7 +242,7 @@ export default function Careers() {
 
             <Link
               href="/insights"
-              className="rounded-full bg-[#f6f3a8] px-5 py-3 text-[15px] font-semibold text-ink transition hover:bg-white"
+              className="rounded-full bg-[#B28B36] px-5 py-3 text-[15px] font-semibold text-white transition hover:bg-white hover:text-[#071536]"
             >
               See all articles →
             </Link>
@@ -258,7 +256,7 @@ export default function Careers() {
           7. EXPLORE MORE
       ================================================= */}
 
-      <section className="relative overflow-hidden bg-[#e9e9e9] py-20">
+      <section className="relative overflow-hidden bg-[#F3F6FA] py-20">
         <div
           aria-hidden="true"
           className="absolute right-0 top-0 h-full w-[45%] opacity-70"
@@ -270,7 +268,7 @@ export default function Careers() {
         />
 
         <div className="wrap relative">
-          <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium tracking-[-1.5px]">
+          <h2 className="font-display text-[clamp(34px,4.5vw,56px)] font-medium tracking-[-1.5px] text-[#071536]">
             More about us
           </h2>
 
@@ -294,21 +292,21 @@ export default function Careers() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex min-h-[260px] flex-col justify-between rounded-3xl bg-white p-7"
+                className="flex min-h-[260px] flex-col justify-between rounded-3xl border border-[#DDE3EC] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#B28B36] hover:shadow-lg"
               >
                 <div>
-                  <h3 className="font-display text-[32px] font-medium">
+                  <h3 className="font-display text-[32px] font-medium text-[#071536]">
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 leading-[1.6] text-ink">
+                  <p className="mt-4 leading-[1.6] text-[#374151]">
                     {item.text}
                   </p>
                 </div>
 
                 <Link
                   href={item.href}
-                  className="mt-6 text-[15px] font-medium transition hover:text-brand"
+                  className="mt-6 text-[15px] font-medium text-[#071536] transition hover:text-[#B28B36]"
                 >
                   → Learn more
                 </Link>
@@ -322,7 +320,7 @@ export default function Careers() {
           8. FINAL CAREERS CTA
       ================================================= */}
 
-      <section className="relative overflow-hidden bg-black text-white">
+      <section className="relative overflow-hidden bg-[#071536] text-white">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 h-[30%]"
@@ -344,7 +342,7 @@ export default function Careers() {
           />
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-[2px] text-[#ff7167]">
+            <p className="text-xs font-bold uppercase tracking-[2px] text-[#B28B36]">
               YOUR NEXT CHAPTER
             </p>
 
@@ -352,7 +350,7 @@ export default function Careers() {
               Your next chapter starts here.
             </h2>
 
-            <p className="mt-4 max-w-[640px] text-lg leading-[1.6] text-[#b0b0b0]">
+            <p className="mt-4 max-w-[640px] text-lg leading-[1.6] text-[#DDE3EC]">
               Starting out or bringing years of experience, you will
               find colleagues who share what they know and projects
               that matter.
@@ -360,7 +358,7 @@ export default function Careers() {
 
             <Link
               href="/contact?service=Careers"
-              className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#f6f3a8] px-7 py-4 font-semibold text-black transition hover:bg-white"
+              className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#B28B36] px-7 py-4 font-semibold text-white transition hover:bg-white hover:text-[#071536]"
             >
               Contact our team
               <span aria-hidden="true">→</span>

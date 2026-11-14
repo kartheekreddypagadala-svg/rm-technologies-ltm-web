@@ -30,23 +30,23 @@ export default function UpdatesAnnouncements() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#191919] py-20 text-white md:py-28">
+    <section className="overflow-hidden bg-[#071536] py-20 text-white md:py-28">
       <div className="mx-auto max-w-[1540px] px-6 lg:px-10">
 
         {/* Section heading */}
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#ff6258]">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
               RulingMind Technologies
             </p>
 
-            <h2 className="font-display text-[clamp(36px,5vw,64px)] font-semibold leading-[1.05] tracking-tight">
+            <h2 className="font-display text-[clamp(36px,5vw,64px)] font-semibold leading-[1.05] tracking-tight text-white">
               Updates and
               <br />
-              <span className="text-[#ff6258]">Announcements</span>
+              <span className="text-[#B28B36]">Announcements</span>
             </h2>
 
-            <p className="mt-5 max-w-xl text-base leading-7 text-white/60">
+            <p className="mt-5 max-w-xl text-base leading-7 text-white/70">
               Stay connected with RulingMind Technologies. Explore our latest
               company updates, technology insights, announcements and
               developments.
@@ -55,7 +55,7 @@ export default function UpdatesAnnouncements() {
 
           <Link
             href="/insights"
-            className="inline-flex items-center gap-4 rounded-full bg-[#f5ffc4] px-7 py-4 font-semibold text-black transition hover:bg-[#ff6258]"
+            className="inline-flex items-center gap-4 rounded-full bg-[#B28B36] px-7 py-4 font-semibold text-white transition-colors hover:bg-white hover:text-[#071536]"
           >
             View all updates
             <ArrowRight size={19} />
@@ -79,13 +79,13 @@ export default function UpdatesAnnouncements() {
                 style={{ scrollSnapAlign: "start" }}
               >
                 <Link href={`/insights/${article.slug}`}>
-                  <h3 className="min-h-[105px] font-display text-2xl font-semibold leading-tight transition group-hover:text-[#ff8178] md:text-[28px]">
+                  <h3 className="min-h-[105px] font-display text-2xl font-semibold leading-tight text-white transition-colors group-hover:text-[#B28B36] md:text-[28px]">
                     {article.title}
                   </h3>
                 </Link>
 
-                <div className="mb-6 mt-4 flex items-center gap-2 text-xs text-white/50">
-                  <CalendarDays size={14} />
+                <div className="mb-6 mt-4 flex items-center gap-2 text-xs text-white/60">
+                  <CalendarDays size={14} className="text-[#B28B36]" />
                   <time dateTime={article.date}>
                     {new Date(`${article.date}T12:00:00`).toLocaleDateString(
                       "en-IN",
@@ -97,7 +97,7 @@ export default function UpdatesAnnouncements() {
                 <Link
                   href={`/insights/${article.slug}`}
                   aria-label={`Read ${article.title}`}
-                  className="relative block h-[250px] overflow-hidden rounded-2xl bg-[#292929] sm:h-[290px]"
+                  className="relative block h-[250px] overflow-hidden rounded-2xl bg-[#071536] sm:h-[290px]"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
@@ -108,9 +108,9 @@ export default function UpdatesAnnouncements() {
                     }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071536]/85 via-[#071536]/10 to-transparent" />
 
-                  <span className="absolute bottom-6 left-6 inline-flex items-center gap-3 font-semibold text-white">
+                  <span className="absolute bottom-6 left-6 inline-flex items-center gap-3 font-semibold text-white transition-colors group-hover:text-[#B28B36]">
                     Read more
                     <ArrowRight size={19} />
                   </span>
@@ -120,8 +120,8 @@ export default function UpdatesAnnouncements() {
           </div>
 
           {/* Slider controls */}
-          <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-7">
-            <p className="text-sm text-white/45">
+          <div className="mt-8 flex items-center justify-between border-t border-white/20 pt-7">
+            <p className="text-sm text-white/60">
               Discover what's happening at RulingMind Technologies
             </p>
 
@@ -130,7 +130,7 @@ export default function UpdatesAnnouncements() {
                 type="button"
                 aria-label="Previous updates"
                 onClick={() => scroll("left")}
-                className="grid h-12 w-12 place-items-center rounded-full bg-[#414638] transition hover:bg-[#f5ffc4] hover:text-black"
+                className="grid h-12 w-12 place-items-center rounded-full border border-[#DDE3EC]/30 bg-white/10 text-white transition-colors hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white"
               >
                 <ChevronLeft size={23} />
               </button>
@@ -139,7 +139,7 @@ export default function UpdatesAnnouncements() {
                 type="button"
                 aria-label="Next updates"
                 onClick={() => scroll("right")}
-                className="grid h-12 w-12 place-items-center rounded-full bg-[#f5ffc4] text-black transition hover:bg-[#ff6258]"
+                className="grid h-12 w-12 place-items-center rounded-full bg-[#B28B36] text-white transition-colors hover:bg-white hover:text-[#071536]"
               >
                 <ChevronRight size={23} />
               </button>

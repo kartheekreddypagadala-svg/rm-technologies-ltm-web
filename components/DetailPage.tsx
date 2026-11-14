@@ -57,14 +57,14 @@ export default function DetailPage({
       >
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
-            <p className="text-[17px] leading-[1.9] text-[#444]">
+            <p className="text-[17px] leading-[1.9] text-[#374151]">
               We believe technology should do more than solve
               immediate problems. It should create new opportunities,
               simplify the way people work and prepare businesses
               for what comes next.
             </p>
 
-            <p className="mt-5 text-[17px] leading-[1.9] text-[#444]">
+            <p className="mt-5 text-[17px] leading-[1.9] text-[#374151]">
               Our approach combines practical expertise, modern
               technology and a focus on measurable business outcomes.
             </p>
@@ -76,12 +76,12 @@ export default function DetailPage({
             </div>
           </div>
 
-          <div className="relative min-h-[330px] overflow-hidden rounded-3xl bg-[#1b1b1b] p-8 text-white md:p-10">
+          <div className="relative min-h-[330px] overflow-hidden rounded-3xl border border-[#DDE3EC] bg-[#071536] p-8 text-white md:p-10">
             <div
               className="absolute right-0 top-0 h-full w-2/3 opacity-70"
               style={{
                 backgroundImage:
-                  "radial-gradient(#f2553f 1.2px, transparent 1.6px)",
+                  "radial-gradient(#B28B36 1.2px, transparent 1.6px)",
                 backgroundSize: "8px 8px",
                 clipPath:
                   "polygon(35% 0,100% 0,100% 100%,0 100%)",
@@ -89,19 +89,19 @@ export default function DetailPage({
             />
 
             <div className="relative z-10">
-              <div className="mb-8 text-[#ff7167]">
+              <div className="mb-8 text-[#B28B36]">
                 <Icon name={item.icon} size={42} />
               </div>
 
-              <p className="text-xs font-bold uppercase tracking-[2px] text-[#ff7167]">
+              <p className="text-xs font-bold uppercase tracking-[2px] text-[#B28B36]">
                 RulingMindTech
               </p>
 
-              <h3 className="mt-5 max-w-[380px] font-display text-3xl font-medium leading-tight">
+              <h3 className="mt-5 max-w-[380px] font-display text-3xl font-medium leading-tight text-white">
                 Innovate. Transform. Grow.
               </h3>
 
-              <p className="mt-5 max-w-[350px] leading-7 text-white/70">
+              <p className="mt-5 max-w-[350px] leading-7 text-white/75">
                 Technology and people working together to create
                 lasting business impact.
               </p>
@@ -115,7 +115,7 @@ export default function DetailPage({
         <section
           key={point.heading}
           className={`relative overflow-hidden py-20 md:py-24 ${
-            index % 2 === 0 ? "bg-[#e9e9e9]" : "bg-white"
+            index % 2 === 0 ? "bg-[#F3F6FA]" : "bg-white"
           }`}
         >
           {index % 2 === 0 && (
@@ -124,7 +124,7 @@ export default function DetailPage({
               className="absolute right-0 top-0 h-full w-[35%] opacity-40"
               style={{
                 backgroundImage:
-                  "radial-gradient(#f2553f 1.2px, transparent 1.6px)",
+                  "radial-gradient(#B28B36 1.2px, transparent 1.6px)",
                 backgroundSize: "8px 8px",
                 clipPath:
                   "polygon(45% 0,100% 0,100% 100%,0 100%)",
@@ -134,11 +134,11 @@ export default function DetailPage({
 
           <div className="wrap relative">
             <div className="mb-12 max-w-[760px]">
-              <p className="mb-4 text-xs font-extrabold uppercase tracking-[2px] text-[#f2553f]">
+              <p className="mb-4 text-xs font-extrabold uppercase tracking-[2px] text-[#B28B36]">
                 {kind} / {String(index + 1).padStart(2, "0")}
               </p>
 
-              <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.1] tracking-[-1.5px]">
+              <h2 className="font-display text-[clamp(34px,4.5vw,58px)] font-medium leading-[1.1] tracking-[-1.5px] text-[#071536]">
                 {point.heading}
               </h2>
             </div>
@@ -147,19 +147,19 @@ export default function DetailPage({
               {point.items.map((value, itemIndex) => (
                 <article
                   key={value}
-                  className="group flex min-h-[210px] flex-col justify-between rounded-3xl bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group flex min-h-[210px] flex-col justify-between rounded-3xl border border-[#DDE3EC] bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#B28B36]/50 hover:shadow-xl"
                 >
                   <div>
-                    <span className="text-xs font-extrabold tracking-[2px] text-[#f2553f]">
+                    <span className="text-xs font-extrabold tracking-[2px] text-[#B28B36]">
                       {String(itemIndex + 1).padStart(2, "0")}
                     </span>
 
-                    <h3 className="mt-7 font-display text-[23px] font-medium leading-tight">
+                    <h3 className="mt-7 font-display text-[23px] font-medium leading-tight text-[#071536]">
                       {value}
                     </h3>
                   </div>
 
-                  <div className="mt-7 h-[2px] w-10 bg-[#f2553f] transition-all group-hover:w-20" />
+                  <div className="mt-7 h-[2px] w-10 bg-[#B28B36] transition-all group-hover:w-20" />
                 </article>
               ))}
             </div>
@@ -168,13 +168,13 @@ export default function DetailPage({
       ))}
 
       {/* OUR APPROACH */}
-      <section className="relative overflow-hidden bg-[#1b1b1b] py-20 text-white md:py-24">
+      <section className="relative overflow-hidden bg-[#071536] py-20 text-white md:py-24">
         <div
           aria-hidden
           className="absolute right-0 top-0 h-full w-[45%] opacity-80"
           style={{
             backgroundImage:
-              "radial-gradient(#f2553f 1.2px, transparent 1.6px)",
+              "radial-gradient(#B28B36 1.2px, transparent 1.6px)",
             backgroundSize: "8px 8px",
             clipPath:
               "polygon(40% 0,100% 0,100% 100%,0 100%)",
@@ -182,11 +182,11 @@ export default function DetailPage({
         />
 
         <div className="wrap relative">
-          <p className="text-xs font-bold uppercase tracking-[2px] text-[#ff7167]">
+          <p className="text-xs font-bold uppercase tracking-[2px] text-[#B28B36]">
             Our approach
           </p>
 
-          <h2 className="mt-5 max-w-[760px] font-display text-[clamp(36px,5vw,60px)] font-medium leading-tight">
+          <h2 className="mt-5 max-w-[760px] font-display text-[clamp(36px,5vw,60px)] font-medium leading-tight text-white">
             Turning your vision into meaningful outcomes.
           </h2>
 
@@ -201,15 +201,15 @@ export default function DetailPage({
                 key={number}
                 className="border-t border-white/30 pt-6"
               >
-                <p className="text-sm font-bold text-[#ff7167]">
+                <p className="text-sm font-bold text-[#B28B36]">
                   {number}
                 </p>
 
-                <h3 className="mt-5 font-display text-2xl font-medium">
+                <h3 className="mt-5 font-display text-2xl font-medium text-white">
                   {title}
                 </h3>
 
-                <p className="mt-4 leading-7 text-white/65">
+                <p className="mt-4 leading-7 text-white/70">
                   {text}
                 </p>
               </div>
@@ -231,10 +231,10 @@ export default function DetailPage({
       )}
 
       {/* ARE YOU READY - LTM STYLE CTA */}
-      <section className="w-full bg-black px-5 py-16 text-white sm:px-8 md:px-12 md:py-24">
-        <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[30px] bg-[#1b1b1b]">
+      <section className="w-full bg-[#071536] px-5 py-16 text-white sm:px-8 md:px-12 md:py-24">
+        <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[30px] bg-[#071536]">
 
-          {/* Orange-red particle wave */}
+          {/* Gold particle wave */}
           <svg
             className="pointer-events-none absolute left-0 top-0 h-full w-[68%]"
             viewBox="0 0 1000 450"
@@ -274,9 +274,9 @@ export default function DetailPage({
                 x2="1"
                 y2="1"
               >
-                <stop offset="0%" stopColor="#ff725b" />
-                <stop offset="55%" stopColor="#fa503c" />
-                <stop offset="100%" stopColor="#c93628" />
+                <stop offset="0%" stopColor="#D8B76C" />
+                <stop offset="55%" stopColor="#B28B36" />
+                <stop offset="100%" stopColor="#80601F" />
               </linearGradient>
             </defs>
 
@@ -289,7 +289,7 @@ export default function DetailPage({
 
             <path
               d="M-50 280 C160 220 290 200 430 165 C600 120 760 70 1030 -20"
-              stroke="#ff6a51"
+              stroke="#D8B76C"
               strokeWidth="30"
               strokeLinecap="round"
               opacity="0.55"
@@ -320,7 +320,7 @@ export default function DetailPage({
 
               <Link
                 href={contactHref}
-                className="mt-9 inline-flex items-center gap-4 rounded-full bg-[#f6f9b9] px-7 py-3 text-[17px] font-semibold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-white"
+                className="mt-9 inline-flex items-center gap-4 rounded-full bg-[#B28B36] px-7 py-3 text-[17px] font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#071536]"
               >
                 Contact us
 

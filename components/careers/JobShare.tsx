@@ -21,9 +21,9 @@ export default function JobShare({ title, href }: Props) {
   const [pageUrl, setPageUrl] = useState("");
   const [copied, setCopied] = useState(false);
 
- useEffect(() => {
-  setPageUrl(`${window.location.origin}${href}`);
-}, [href]);
+  useEffect(() => {
+    setPageUrl(`${window.location.origin}${href}`);
+  }, [href]);
 
   const shareText = `Explore this career opportunity at RulingMindTech: ${title}`;
   const encodedUrl = encodeURIComponent(pageUrl);
@@ -45,7 +45,7 @@ export default function JobShare({ title, href }: Props) {
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        className="inline-flex items-center gap-2 rounded-full border border-[#d9dfe6] px-5 py-3 font-semibold text-[#172333] transition hover:border-[#f2553f] hover:text-[#f2553f]"
+        className="inline-flex items-center gap-2 rounded-full border border-[#DDE3EC] px-5 py-3 font-semibold text-[#071536] transition hover:border-[#B28B36] hover:text-[#B28B36]"
       >
         <Share2 size={17} />
         Share
@@ -63,8 +63,8 @@ export default function JobShare({ title, href }: Props) {
             onClick={() => setOpen(false)}
           />
 
-          <div className="absolute right-0 top-full z-40 mt-3 w-60 rounded-xl border border-[#e5e7eb] bg-white p-2 text-[#172333] shadow-xl">
-            <p className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#87909d]">
+          <div className="absolute right-0 top-full z-40 mt-3 w-60 rounded-xl border border-[#DDE3EC] bg-white p-2 text-[#071536] shadow-xl">
+            <p className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#374151]">
               Share this opportunity
             </p>
 
@@ -72,7 +72,7 @@ export default function JobShare({ title, href }: Props) {
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm hover:bg-[#f3f4f6]"
+              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition hover:bg-[#F3F6FA] hover:text-[#B28B36]"
             >
               <Facebook size={18} />
               Share on Facebook
@@ -82,7 +82,7 @@ export default function JobShare({ title, href }: Props) {
               href={`https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm hover:bg-[#f3f4f6]"
+              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition hover:bg-[#F3F6FA] hover:text-[#B28B36]"
             >
               <span className="text-lg font-bold text-green-600">◉</span>
               Share on WhatsApp
@@ -92,7 +92,7 @@ export default function JobShare({ title, href }: Props) {
               href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm hover:bg-[#f3f4f6]"
+              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition hover:bg-[#F3F6FA] hover:text-[#B28B36]"
             >
               <span className="text-base font-bold">𝕏</span>
               Share on X
@@ -100,18 +100,18 @@ export default function JobShare({ title, href }: Props) {
 
             <a
               href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodedText}%0A${encodedUrl}`}
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm hover:bg-[#f3f4f6]"
+              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition hover:bg-[#F3F6FA] hover:text-[#B28B36]"
             >
               <Mail size={18} />
               Share by Email
             </a>
 
-            <div className="my-1 border-t border-[#e5e7eb]" />
+            <div className="my-1 border-t border-[#DDE3EC]" />
 
             <button
               type="button"
               onClick={copyLink}
-              className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm hover:bg-[#f3f4f6]"
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm transition hover:bg-[#F3F6FA] hover:text-[#B28B36]"
             >
               {copied ? (
                 <Check size={18} className="text-green-600" />

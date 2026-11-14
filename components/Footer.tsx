@@ -50,18 +50,18 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="bg-[#071536] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1650px]">
 
         {/* MAIN WHITE FOOTER PANEL */}
-        <div className="overflow-hidden rounded-[28px] bg-white px-7 pb-7 pt-12 sm:px-10 sm:pt-16 lg:px-20 lg:pb-9 lg:pt-20">
+        <div className="overflow-hidden rounded-[28px] border border-[#DDE3EC] bg-white px-7 pb-7 pt-12 sm:px-10 sm:pt-16 lg:px-20 lg:pb-9 lg:pt-20">
 
           {/* MAIN CONTENT */}
           <div className="grid gap-12 lg:grid-cols-[1.2fr_1.3fr] lg:gap-16">
 
             {/* LEFT HEADING */}
             <div>
-              <h2 className="max-w-[570px] font-display text-[clamp(43px,5.5vw,76px)] font-semibold leading-[1.08] tracking-[-2px] text-black">
+              <h2 className="max-w-[570px] font-display text-[clamp(43px,5.5vw,76px)] font-semibold leading-[1.08] tracking-[-2px] text-[#071536]">
                 It's time to
                 <br />
                 Build what's next.
@@ -73,7 +73,7 @@ export default function Footer() {
 
               {footerColumns.map((column) => (
                 <div key={column.title}>
-                  <h3 className="mb-5 text-[16px] font-semibold text-black">
+                  <h3 className="mb-5 text-[16px] font-semibold text-[#071536]">
                     {column.title}
                   </h3>
 
@@ -82,7 +82,7 @@ export default function Footer() {
                       <Link
                         key={link.label}
                         href={link.href}
-                        className="text-[15px] text-black transition-colors hover:text-[#ff6258]"
+                        className="text-[15px] text-[#374151] transition-colors hover:text-[#B28B36]"
                       >
                         {link.label}
                       </Link>
@@ -103,11 +103,11 @@ export default function Footer() {
               aria-label="RulingMind Technologies home"
               className="inline-flex items-baseline gap-2"
             >
-              <span className="font-display text-[35px] font-extrabold tracking-[-2px] text-[#ff6258]">
+              <span className="font-display text-[35px] font-extrabold tracking-[-2px] text-[#071536]">
                 RULINGMIND
               </span>
 
-              <span className="text-[10px] font-bold tracking-[3px] text-black">
+              <span className="text-[10px] font-bold tracking-[3px] text-[#B28B36]">
                 TECH
               </span>
             </Link>
@@ -120,7 +120,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="grid h-10 w-10 place-items-center rounded-full bg-[#ededed] text-black transition hover:bg-[#ff6258] hover:text-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#DDE3EC] bg-[#F3F6FA] text-[#071536] transition hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white"
               >
                 <Linkedin size={20} />
               </a>
@@ -130,7 +130,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="grid h-10 w-10 place-items-center rounded-full bg-[#ededed] text-black transition hover:bg-[#ff6258] hover:text-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#DDE3EC] bg-[#F3F6FA] text-[#071536] transition hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white"
               >
                 <Youtube size={20} />
               </a>
@@ -140,7 +140,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="grid h-10 w-10 place-items-center rounded-full bg-[#ededed] text-black transition hover:bg-[#ff6258] hover:text-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#DDE3EC] bg-[#F3F6FA] text-[#071536] transition hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white"
               >
                 <Instagram size={20} />
               </a>
@@ -150,7 +150,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="grid h-10 w-10 place-items-center rounded-full bg-[#ededed] text-black transition hover:bg-[#ff6258] hover:text-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#DDE3EC] bg-[#F3F6FA] text-[#071536] transition hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white"
               >
                 <Facebook size={20} />
               </a>
@@ -159,7 +159,7 @@ export default function Footer() {
           </div>
 
           {/* DIVIDER */}
-          <div className="mt-7 h-px w-full bg-[#ff6258]/40" />
+          <div className="mt-7 h-px w-full bg-[#DDE3EC]" />
 
           {/* LEGAL LINKS */}
           <div className="flex flex-col justify-between gap-5 pt-7 md:flex-row md:items-center">
@@ -169,14 +169,14 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[13px] font-medium text-black transition-colors hover:text-[#ff6258]"
+                  className="text-[13px] font-medium text-[#374151] transition-colors hover:text-[#B28B36]"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            <p className="shrink-0 text-[12px] text-[#666]">
+            <p className="shrink-0 text-[12px] text-[#374151]">
               © {new Date().getFullYear()} RulingMind Technologies.
               All rights reserved.
             </p>

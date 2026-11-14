@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 
 import OfferingCards from "@/components/OfferingCards";
@@ -45,12 +46,22 @@ export default function ServicesPage() {
       <Section title="Why customers choose us">
         <div className="grid gap-5 md:grid-cols-3">
           {whyUs.map((w, i) => (
-            <div key={w.title} className="rounded-3xl border border-[#e3e3e3] p-7">
-              <div className="font-display text-5xl font-medium" style={{ color: CORAL }}>
+            <div
+              key={w.title}
+              className="rounded-3xl border border-[#DDE3EC] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#B28B36] hover:shadow-[0_18px_45px_#07153612]"
+            >
+              <div
+                className="font-display text-5xl font-medium"
+                style={{ color: CORAL }}
+              >
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <h3 className="mt-4 font-display text-2xl font-medium">{w.title}</h3>
-              <p className="mt-3 text-[#444]">{w.text}</p>
+
+              <h3 className="mt-4 font-display text-2xl font-medium text-[#071536]">
+                {w.title}
+              </h3>
+
+              <p className="mt-3 text-[#374151]">{w.text}</p>
             </div>
           ))}
         </div>

@@ -6,9 +6,9 @@ import Icon from "./Icon";
 
 // Badge styles
 const badge: Record<Status, string> = {
-  "Available Now": "bg-[#d9f5e5] text-[#12804a]",
-  Pilot: "bg-[#dce9ff] text-[#1f5fd1]",
-  Planned: "bg-[#fff1c9] text-[#9a6a00]",
+  "Available Now": "bg-[#F3F6FA] text-[#071536]",
+  Pilot: "bg-[#B28B36]/15 text-[#071536]",
+  Planned: "bg-[#DDE3EC] text-[#374151]",
 };
 
 // Badge component
@@ -37,19 +37,19 @@ export function PageHero({
       className="bg-cover bg-center py-20 text-white md:py-[105px]"
       style={{
         backgroundImage:
-          "linear-gradient(90deg,#081725f2,#08172580),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85')",
+          "linear-gradient(90deg,#071536f5,#071536a6),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85')",
       }}
     >
       <div className="wrap">
-        <div className="mb-[22px] text-xs text-[#b9c4d0]">
+        <div className="mb-[22px] text-xs text-[#DDE3EC]">
           Home / {crumb}
         </div>
 
-        <div className="eyebrow !text-[#8ab8ff]">{eyebrow}</div>
+        <div className="eyebrow !text-[#B28B36]">{eyebrow}</div>
 
         <h1 className="h1 max-w-[820px]">{title}</h1>
 
-        <p className="max-w-[620px] text-[17px] leading-[1.8] text-[#d4dce5]">
+        <p className="max-w-[620px] text-[17px] leading-[1.8] text-[#DDE3EC]">
           {text}
         </p>
       </div>
@@ -80,7 +80,7 @@ export function Intro({
       {text && (
         <p
           className={`leading-[1.8] ${
-            dark ? "text-[#aebdcb]" : "text-muted"
+            dark ? "text-[#DDE3EC]" : "text-[#374151]"
           }`}
         >
           {text}
@@ -98,16 +98,16 @@ export function Cards({ items }: { items: Item[] }) {
     <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
       {items.map((c) => {
         const card = (
-          <div className="h-full min-h-[230px] border border-[#e3e8ee] bg-white p-7 text-ink transition hover:-translate-y-[5px] hover:shadow-[0_18px_45px_#0a1a2b12]">
+          <div className="h-full min-h-[230px] border border-[#DDE3EC] bg-white p-7 text-[#071536] transition hover:-translate-y-[5px] hover:border-[#B28B36] hover:shadow-[0_18px_45px_#07153618]">
             {c.num && (
-              <div className="text-[11px] font-extrabold tracking-[1px] text-brand">
+              <div className="text-[11px] font-extrabold tracking-[1px] text-[#B28B36]">
                 {c.num}
               </div>
             )}
 
             <div className="flex items-start justify-between">
               {c.icon ? (
-                <div className="my-[22px] text-brand">
+                <div className="my-[22px] text-[#B28B36]">
                   <Icon name={c.icon} size={26} />
                 </div>
               ) : (
@@ -121,12 +121,12 @@ export function Cards({ items }: { items: Item[] }) {
               {c.title}
             </h3>
 
-            <p className="text-sm leading-[1.7] text-muted">
+            <p className="text-sm leading-[1.7] text-[#374151]">
               {c.text}
             </p>
 
             {c.href && (
-              <span className="more">Learn more ↗</span>
+              <span className="more text-[#B28B36]">Learn more ↗</span>
             )}
           </div>
         );
@@ -173,11 +173,10 @@ export function Cta({
     : "/contact";
 
   return (
-    <section className="w-full bg-black px-5 py-16 text-white sm:px-8 md:px-12 md:py-24">
+    <section className="w-full bg-[#071536] px-5 py-16 text-white sm:px-8 md:px-12 md:py-24">
+      <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[30px] border border-white/10 bg-[#0D2045]">
 
-      <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[30px] bg-[#1b1b1b]">
-
-        {/* Orange-red particle wave */}
+        {/* Gold particle wave */}
         <svg
           className="pointer-events-none absolute left-0 top-0 h-full w-[68%]"
           viewBox="0 0 1000 450"
@@ -217,9 +216,9 @@ export function Cta({
               x2="1"
               y2="1"
             >
-              <stop offset="0%" stopColor="#ff725b" />
-              <stop offset="55%" stopColor="#fa503c" />
-              <stop offset="100%" stopColor="#c93628" />
+              <stop offset="0%" stopColor="#D9B86A" />
+              <stop offset="55%" stopColor="#B28B36" />
+              <stop offset="100%" stopColor="#8A6928" />
             </linearGradient>
           </defs>
 
@@ -232,7 +231,7 @@ export function Cta({
 
           <path
             d="M-50 280 C160 220 290 200 430 165 C600 120 760 70 1030 -20"
-            stroke="#ff6a51"
+            stroke="#D9B86A"
             strokeWidth="30"
             strokeLinecap="round"
             opacity="0.55"
@@ -258,14 +257,14 @@ export function Cta({
 
           {/* Right description */}
           <div className="md:pl-4">
-            <p className="max-w-[550px] text-[18px] font-medium leading-[1.55] text-white md:text-[23px]">
+            <p className="max-w-[550px] text-[18px] font-medium leading-[1.55] text-[#F3F6FA] md:text-[23px]">
               {text}
             </p>
 
             {/* Contact button */}
             <Link
               href={contactHref}
-              className="mt-9 inline-flex items-center gap-4 rounded-full bg-[#f6f9b9] px-7 py-3 text-[17px] font-semibold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-white"
+              className="mt-9 inline-flex items-center gap-4 rounded-full bg-[#B28B36] px-7 py-3 text-[17px] font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#071536]"
             >
               Contact us
 

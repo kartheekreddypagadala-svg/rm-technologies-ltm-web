@@ -18,9 +18,16 @@ export default function Insights() {
   return (
     <>
       <DarkHero
-        title={<>Insights<br />Hub</>}
+        title={
+          <>
+            Insights
+            <br />
+            Hub
+          </>
+        }
         text="Short reads on cloud, AI, security and the web: practical ideas for growing businesses."
       />
+
       <Block grey title="Browse by topic">
         <Filterable items={items} />
       </Block>

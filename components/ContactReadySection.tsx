@@ -27,19 +27,19 @@ export default function ContactReadySection() {
   }
 
   const fieldClass =
-    "h-[72px] w-full rounded-full border border-white/80 bg-transparent px-7 text-[16px] text-white outline-none placeholder:text-white focus:border-[#ff6258]";
+    "h-[72px] w-full rounded-full border border-white/35 bg-white/5 px-7 text-[16px] text-white outline-none transition-colors placeholder:text-white/65 focus:border-[#B28B36] focus:ring-1 focus:ring-[#B28B36]";
 
   return (
-    <section className="bg-black px-6 py-20 text-white md:px-10 md:py-28">
+    <section className="bg-[#071536] px-6 py-20 text-white md:px-10 md:py-28">
       <div className="mx-auto grid max-w-[1450px] gap-14 lg:grid-cols-[0.85fr_1.35fr] lg:gap-20">
 
         {/* Left content */}
         <div>
-          <p className="mb-5 text-xs font-bold uppercase tracking-[3px] text-[#ff6258]">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
             Let's create something meaningful
           </p>
 
-          <h2 className="font-display text-[clamp(48px,6vw,78px)] font-semibold leading-[1.02] tracking-tight">
+          <h2 className="font-display text-[clamp(48px,6vw,78px)] font-semibold leading-[1.02] tracking-tight text-white">
             Are you
             <br />
             ready?
@@ -51,7 +51,7 @@ export default function ContactReadySection() {
             complex challenges and create what's next.
           </p>
 
-          <p className="mt-6 text-sm leading-7 text-white/55">
+          <p className="mt-6 text-sm leading-7 text-white/65">
             Tell us about your goals. Let's explore how RulingMind
             Technologies can help your business move forward.
           </p>
@@ -126,7 +126,7 @@ export default function ContactReadySection() {
                 required
                 className={`${fieldClass} appearance-none`}
               >
-                <option value="" disabled className="bg-black">
+                <option value="" disabled className="bg-[#071536]">
                   Country*
                 </option>
 
@@ -134,7 +134,7 @@ export default function ContactReadySection() {
                   <option
                     key={country}
                     value={country}
-                    className="bg-black text-white"
+                    className="bg-[#071536] text-white"
                   >
                     {country}
                   </option>
@@ -149,7 +149,7 @@ export default function ContactReadySection() {
               aria-label="Message"
               required
               rows={4}
-              className="min-h-[130px] w-full resize-y rounded-[34px] border border-white/80 bg-transparent px-7 py-6 text-[16px] text-white outline-none placeholder:text-white focus:border-[#ff6258]"
+              className="min-h-[130px] w-full resize-y rounded-[34px] border border-white/35 bg-white/5 px-7 py-6 text-[16px] text-white outline-none transition-colors placeholder:text-white/65 focus:border-[#B28B36] focus:ring-1 focus:ring-[#B28B36]"
             />
 
             {/* Consent */}
@@ -159,7 +159,7 @@ export default function ContactReadySection() {
                   type="checkbox"
                   name="privacyConsent"
                   required
-                  className="mt-1 h-6 w-6 shrink-0 accent-[#ff6258]"
+                  className="mt-1 h-6 w-6 shrink-0 accent-[#B28B36]"
                 />
                 <span className="text-[15px] font-medium leading-6 text-white/90">
                   I agree to RulingMind Technologies collecting and
@@ -172,7 +172,7 @@ export default function ContactReadySection() {
                 <input
                   type="checkbox"
                   name="marketingConsent"
-                  className="mt-1 h-6 w-6 shrink-0 accent-[#ff6258]"
+                  className="mt-1 h-6 w-6 shrink-0 accent-[#B28B36]"
                 />
                 <span className="text-[15px] font-medium leading-6 text-white/90">
                   I agree to receive updates about services, events and
@@ -187,7 +187,7 @@ export default function ContactReadySection() {
               please refer to our{" "}
               <a
                 href="/privacy-policy"
-                className="font-semibold text-white underline underline-offset-4 hover:text-[#ff6258]"
+                className="font-semibold text-[#B28B36] underline underline-offset-4 transition-colors hover:text-white"
               >
                 Privacy Policy
               </a>.
@@ -196,14 +196,14 @@ export default function ContactReadySection() {
             {/* Submit */}
             <button
               type="submit"
-              className="inline-flex items-center gap-4 rounded-full bg-[#ff6258] px-9 py-4 font-bold text-black transition hover:bg-white"
+              className="inline-flex items-center gap-4 rounded-full bg-[#B28B36] px-9 py-4 font-bold text-white transition-colors hover:bg-white hover:text-[#071536]"
             >
               Submit enquiry
               <ArrowRight size={19} />
             </button>
 
             {submitted && (
-              <p role="status" className="text-sm text-[#f5ffc4]">
+              <p role="status" className="text-sm text-[#B28B36]">
                 Form validated successfully. Connect your backend to receive
                 and process enquiries.
               </p>

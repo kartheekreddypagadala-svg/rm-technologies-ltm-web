@@ -68,16 +68,16 @@ export default function OutcreatingCarousel() {
 
         {/* Section heading */}
         <div className="mb-12 max-w-[850px]">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#e94343]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
             RulingMind Technologies
           </p>
 
-          <h2 className="font-display text-[clamp(34px,5vw,62px)] font-semibold leading-[1.08] tracking-tight text-[#171717]">
+          <h2 className="font-display text-[clamp(34px,5vw,62px)] font-semibold leading-[1.08] tracking-tight text-[#071536]">
             The technology partner for
-            <span className="text-[#e94343]"> what's next.</span>
+            <span className="text-[#B28B36]"> what's next.</span>
           </h2>
 
-          <p className="mt-5 max-w-[700px] text-base leading-7 text-[#555] md:text-lg">
+          <p className="mt-5 max-w-[700px] text-base leading-7 text-[#374151] md:text-lg">
             Discover how our technology capabilities can help businesses
             innovate, modernise and move forward.
           </p>
@@ -87,15 +87,15 @@ export default function OutcreatingCarousel() {
         <div className="relative">
 
           <div
-            className="relative min-h-[590px] overflow-hidden rounded-[28px] bg-[#14221e] md:min-h-[650px]"
+            className="relative min-h-[590px] overflow-hidden rounded-[28px] bg-[#071536] md:min-h-[650px]"
             style={{
               backgroundImage: `
                 linear-gradient(
                   90deg,
-                  rgba(5, 18, 16, 0.96) 0%,
-                  rgba(5, 18, 16, 0.86) 36%,
-                  rgba(5, 18, 16, 0.43) 70%,
-                  rgba(5, 18, 16, 0.12) 100%
+                  rgba(7, 21, 54, 0.97) 0%,
+                  rgba(7, 21, 54, 0.88) 36%,
+                  rgba(7, 21, 54, 0.48) 70%,
+                  rgba(7, 21, 54, 0.15) 100%
                 ),
                 url('${img(current.image)}')
               `,
@@ -110,11 +110,11 @@ export default function OutcreatingCarousel() {
               key={active}
               className="relative z-10 flex min-h-[590px] max-w-[780px] flex-col px-7 py-12 text-white animate-in fade-in duration-500 sm:px-12 md:min-h-[650px] md:justify-center md:px-16 lg:px-20"
             >
-              <p className="mb-3 text-[clamp(32px,4vw,54px)] font-semibold tracking-tight">
+              <p className="mb-3 text-[clamp(32px,4vw,54px)] font-semibold tracking-tight text-[#B28B36]">
                 {current.eyebrow}
               </p>
 
-              <h3 className="max-w-[700px] font-display text-[clamp(29px,4vw,49px)] font-semibold leading-[1.12]">
+              <h3 className="max-w-[700px] font-display text-[clamp(29px,4vw,49px)] font-semibold leading-[1.12] text-white">
                 {current.title}
               </h3>
 
@@ -129,7 +129,7 @@ export default function OutcreatingCarousel() {
               <div className="mt-12">
                 <Link
                   href={current.href}
-                  className="inline-flex items-center gap-4 rounded-full bg-[#e94343] px-7 py-4 font-semibold text-white transition hover:bg-white hover:text-black"
+                  className="inline-flex items-center gap-4 rounded-full bg-[#B28B36] px-7 py-4 font-semibold text-white transition hover:bg-white hover:text-[#071536]"
                 >
                   {current.linkText}
                   <ArrowRight size={20} />
@@ -139,7 +139,9 @@ export default function OutcreatingCarousel() {
 
             {/* Slide counter */}
             <div className="absolute bottom-7 right-7 z-20 flex items-center gap-2 text-sm font-semibold text-white md:bottom-9 md:right-12">
-              <span className="text-xl">{String(active + 1).padStart(2, "0")}</span>
+              <span className="text-xl text-[#B28B36]">
+                {String(active + 1).padStart(2, "0")}
+              </span>
               <span className="text-white/50">/</span>
               <span className="text-white/60">
                 {String(slides.length).padStart(2, "0")}
@@ -153,7 +155,7 @@ export default function OutcreatingCarousel() {
             type="button"
             onClick={previous}
             aria-label="Previous slide"
-            className="absolute -left-3 top-1/2 z-30 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-[#a5a5a5] text-white shadow-lg transition hover:bg-[#e94343] sm:-left-6 md:h-14 md:w-14"
+            className="absolute -left-3 top-1/2 z-30 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#DDE3EC] bg-white text-[#071536] shadow-lg transition hover:border-[#B28B36] hover:bg-[#B28B36] hover:text-white sm:-left-6 md:h-14 md:w-14"
           >
             <ChevronLeft size={30} />
           </button>
@@ -163,7 +165,7 @@ export default function OutcreatingCarousel() {
             type="button"
             onClick={next}
             aria-label="Next slide"
-            className="absolute -right-3 top-1/2 z-30 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-[#e94343] text-white shadow-lg transition hover:bg-black sm:-right-6 md:h-14 md:w-14"
+            className="absolute -right-3 top-1/2 z-30 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-[#071536] text-white shadow-lg transition hover:bg-[#B28B36] sm:-right-6 md:h-14 md:w-14"
           >
             <ChevronRight size={30} />
           </button>
@@ -181,8 +183,8 @@ export default function OutcreatingCarousel() {
               onClick={() => setActive(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 active === index
-                  ? "w-12 bg-[#e94343]"
-                  : "w-3 bg-[#c9c9c9] hover:bg-[#777]"
+                  ? "w-12 bg-[#B28B36]"
+                  : "w-3 bg-[#DDE3EC] hover:bg-[#374151]"
               }`}
             />
           ))}

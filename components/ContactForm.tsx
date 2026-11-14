@@ -13,7 +13,7 @@ type Props = {
 };
 
 const field =
-  "h-[58px] w-full rounded-full border border-[#292929] bg-white px-5 text-[16px] text-black outline-none transition placeholder:text-black focus:border-[#f2553f] focus:ring-2 focus:ring-[#f2553f]/10";
+  "h-[58px] w-full rounded-full border border-[#DDE3EC] bg-white px-5 text-[16px] text-[#071536] outline-none transition placeholder:text-[#374151] focus:border-[#B28B36] focus:ring-2 focus:ring-[#B28B36]/10";
 
 const countries = [
   "India",
@@ -91,7 +91,6 @@ export default function ContactForm({
 
   return (
     <form onSubmit={onSubmit} className="grid gap-[26px]">
-
       {/* HONEYPOT */}
       <input
         name="website"
@@ -193,17 +192,17 @@ export default function ContactForm({
         defaultValue={defaultMessage}
         placeholder="Let us know how we can help you*"
         aria-label="Message"
-        className="min-h-[125px] w-full resize-y rounded-[30px] border border-[#292929] bg-white px-5 py-4 text-[16px] text-black outline-none transition placeholder:text-black focus:border-[#f2553f] focus:ring-2 focus:ring-[#f2553f]/10"
+        className="min-h-[125px] w-full resize-y rounded-[30px] border border-[#DDE3EC] bg-white px-5 py-4 text-[16px] text-[#071536] outline-none transition placeholder:text-[#374151] focus:border-[#B28B36] focus:ring-2 focus:ring-[#B28B36]/10"
       />
 
       {/* REQUIRED DATA CONSENT */}
-      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-black">
+      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-[#374151]">
         <input
           type="checkbox"
           name="dataConsent"
           value="true"
           required
-          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#f2553f]"
+          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#B28B36]"
         />
 
         <span>
@@ -214,12 +213,12 @@ export default function ContactForm({
       </label>
 
       {/* OPTIONAL MARKETING CONSENT */}
-      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-black">
+      <label className="flex cursor-pointer items-start gap-3 text-[15px] leading-[1.4] text-[#374151]">
         <input
           type="checkbox"
           name="marketingConsent"
           value="true"
-          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#f2553f]"
+          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-[#B28B36]"
         />
 
         <span>
@@ -229,19 +228,19 @@ export default function ContactForm({
       </label>
 
       {/* PRIVACY POLICY */}
-      <p className="text-[14px] leading-6 text-black">
+      <p className="text-[14px] leading-6 text-[#374151]">
         To learn more about how we protect your data, please refer
         to the{" "}
         <a
           href="/privacy-policy"
-          className="font-semibold underline underline-offset-2 transition hover:text-[#f2553f]"
+          className="font-semibold text-[#B28B36] underline underline-offset-2 transition hover:text-[#071536]"
         >
           RulingMindTech Privacy Policy
         </a>.
       </p>
 
       {/* SECURITY NOTICE */}
-      <p className="text-[14px] text-[#333]">
+      <p className="text-[14px] text-[#374151]">
         Your information is submitted securely through our contact form.
       </p>
 
@@ -249,10 +248,9 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex w-fit items-center justify-center gap-3 rounded-full bg-[#e83232] px-12 py-4 text-[15px] font-bold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-fit items-center justify-center gap-3 rounded-full bg-[#071536] px-12 py-4 text-[15px] font-bold text-white transition hover:bg-[#B28B36] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "sending" ? "Sending..." : "Submit"}
-
         <ArrowRight size={19} />
       </button>
 
