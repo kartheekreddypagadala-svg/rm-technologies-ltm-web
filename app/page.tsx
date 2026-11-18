@@ -221,9 +221,6 @@ export default function Home() {
 
               <Reveal className="max-w-[650px]">
 
-                <p className="mb-5 text-[12px] font-extrabold uppercase tracking-[2.5px] text-[#071536]">
-                  RULINGMIND TECHNOLOGIES
-                </p>
 
                 <h1 className="font-display text-[clamp(40px,5vw,58px)] font-extrabold leading-[1.02] tracking-[-2px] text-[#071536]">
                   Building Intelligent
@@ -277,9 +274,7 @@ export default function Home() {
 
               <div className="px-6 pb-1 pt-7 sm:px-8 sm:pt-9">
 
-                <p className="mb-4 text-[10px] font-extrabold uppercase tracking-[2.4px] text-[#B28B36] sm:text-xs">
-                  RULINGMIND TECHNOLOGIES
-                </p>
+
 
                 <h1 className="max-w-[520px] font-display text-[clamp(34px,8vw,48px)] font-extrabold leading-[1.04] tracking-[-1.5px] text-white">
                   Building Intelligent Businesses
@@ -542,9 +537,7 @@ export default function Home() {
 
           <div>
 
-            <p className="mb-6 text-xs font-bold uppercase tracking-[4px] text-[#B28B36]">
-              RulingMind Technologies
-            </p>
+
 
             <h2 className="font-display text-[clamp(42px,5.5vw,72px)] font-semibold leading-[1.08] tracking-tight text-white">
               We are the
@@ -643,9 +636,7 @@ export default function Home() {
 
             <div className="order-first flex min-h-[300px] flex-col items-center justify-center px-2 text-center md:order-none md:col-start-2 md:row-start-2 md:min-h-[280px]">
 
-              <p className="mb-5 text-xs font-bold uppercase tracking-[4px] text-[#B28B36]">
-                RulingMind Technologies
-              </p>
+
 
               <h2 className="font-display text-[clamp(38px,4.5vw,64px)] font-semibold leading-[1.05] tracking-tight text-[#071536]">
                 Our technology

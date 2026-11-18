@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 
@@ -8,10 +7,43 @@ import { SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { ddb, ses } from "@/lib/aws";
 import { parseContact } from "@/lib/validate";
 import { pushLeadToCrm } from "@/lib/crm";
+import { isSameOrigin, clientIp } from "@/lib/security";
+import { isRateLimited } from "@/lib/rateLimit";
+import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy";
 
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
+  // 1. Check request origin.
+  if (!isSameOrigin(req)) {
+    return NextResponse.json(
+      { error: "Request not allowed." },
+      { status: 403 }
+    );
+  }
+
+  // 2. Check request size.
+  if (
+    Number(req.headers.get("content-length") ?? 0) >
+    20_000
+  ) {
+    return NextResponse.json(
+      { error: "Your message is too large." },
+      { status: 413 }
+    );
+  }
+
+  // 3. Rate limiting.
+  if (isRateLimited(`contact:${clientIp(req)}`)) {
+    return NextResponse.json(
+      {
+        error:
+          "Too many messages. Please wait a few minutes and try again."
+      },
+      { status: 429 }
+    );
+  }
+
   let body: unknown;
 
   try {
@@ -23,6 +55,7 @@ export async function POST(req: Request) {
     );
   }
 
+  // 4. Validate submitted information and consent.
   const parsed = parseContact(body);
 
   if (!parsed.ok) {
@@ -32,6 +65,7 @@ export async function POST(req: Request) {
     );
   }
 
+  // 5. Honeypot spam check.
   if (parsed.spam) {
     return NextResponse.json({ ok: true });
   }
@@ -57,12 +91,13 @@ export async function POST(req: Request) {
     country,
     service,
     message,
+    marketingConsent
   } = parsed.data;
 
   const id = randomUUID();
   const createdAt = new Date().toISOString();
 
-  // 1. Save the contact enquiry in DynamoDB.
+  // 6. Save enquiry and consent record.
   try {
     await ddb.send(
       new PutCommand({
@@ -79,19 +114,27 @@ export async function POST(req: Request) {
           country,
           service,
           message,
-        },
+
+          dataConsent: true,
+          marketingConsent,
+          consentAt: createdAt,
+          noticeVersion: PRIVACY_NOTICE_VERSION
+        }
       })
     );
   } catch (err) {
     console.error("DynamoDB write failed:", err);
 
     return NextResponse.json(
-      { error: "Could not save your enquiry. Please try again." },
+      {
+        error:
+          "Could not save your enquiry. Please try again."
+      },
       { status: 500 }
     );
   }
 
-  // 2. Sync the lead with your CRM.
+  // 7. Synchronize with CRM.
   try {
     await pushLeadToCrm({
       name,
@@ -99,12 +142,13 @@ export async function POST(req: Request) {
       company,
       service,
       message,
+      marketingConsent
     });
   } catch (err) {
     console.error("CRM sync failed:", err);
   }
 
-  // 3. Send an email notification.
+  // 8. Send email notification.
   const to = process.env.CONTACT_TO;
   const from = process.env.CONTACT_FROM;
 
@@ -114,13 +158,15 @@ export async function POST(req: Request) {
         new SendEmailCommand({
           FromEmailAddress: from,
           Destination: {
-            ToAddresses: [to],
+            ToAddresses: [to]
           },
           ReplyToAddresses: [email],
           Content: {
             Simple: {
               Subject: {
-                Data: `New enquiry: ${service} (${name.replace(/[\r\n]+/g, " ")})`,
+                Data:
+                  `New enquiry: ${service} ` +
+                  `(${name.replace(/[\r\n]+/g, " ")})`
               },
               Body: {
                 Text: {
@@ -135,17 +181,23 @@ Company: ${company || "-"}
 Job Title: ${jobTitle || "-"}
 Country: ${country || "-"}
 Enquiry Type: ${service}
+Marketing consent: ${
+                    marketingConsent
+                      ? "YES"
+                      : "NO - do not send marketing"
+                  }
 
 Message:
 ${message}
 
 Enquiry ID: ${id}
 Submitted: ${createdAt}
-                  `.trim(),
-                },
-              },
-            },
-          },
+Notice version: ${PRIVACY_NOTICE_VERSION}
+                  `.trim()
+                }
+              }
+            }
+          }
         })
       );
     } catch (err) {
@@ -157,7 +209,8 @@ Submitted: ${createdAt}
     {
       ok: true,
       id,
-      message: "Your enquiry has been submitted successfully.",
+      message:
+        "Your enquiry has been submitted successfully."
     },
     { status: 201 }
   );

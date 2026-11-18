@@ -37,7 +37,7 @@ export default async function CareerOpportunitiesPage({
   }
 
   const category = careerCategories[type as CareerCategory];
-  const jobs = getCareerJobs(type);
+  const jobs = getCareerJobs(type as CareerCategory);
 
   return (
     <main className="min-h-screen bg-white text-[#071536]">
@@ -60,7 +60,7 @@ export default async function CareerOpportunitiesPage({
 
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-[#071536] px-6 py-20 text-white md:px-16 md:py-28">
-        {/* GOLD DOTTED BACKGROUND */}
+
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-0 opacity-35"
@@ -73,7 +73,6 @@ export default async function CareerOpportunitiesPage({
           }}
         />
 
-        {/* SOFT GOLD GLOW */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-[-10%] top-[-30%] -z-0 h-[400px] w-[400px] rounded-full bg-[#B28B36]/10 blur-[120px]"
@@ -117,6 +116,7 @@ export default async function CareerOpportunitiesPage({
           {/* JOB LIST CONTAINER */}
           <div className="mt-12 overflow-hidden rounded-2xl border border-[#DDE3EC] bg-white shadow-sm">
 
+            {/* OPENINGS HEADER */}
             <div className="flex items-center justify-between border-b border-[#DDE3EC] bg-[#071536] px-6 py-5 text-white">
               <span className="text-sm text-white/80">
                 Total openings
@@ -128,24 +128,30 @@ export default async function CareerOpportunitiesPage({
               </strong>
             </div>
 
+            {/* JOB LIST */}
             {jobs.map((job, index) => {
+
               const detailHref =
                 `/careers/opportunities/${type}/${job.slug}`;
 
+              // Dedicated application page
               const applyHref =
-                `/contact?service=Other&role=${encodeURIComponent(job.title)}&category=${encodeURIComponent(category.title)}`;
+                `/careers/opportunities/${type}/${job.slug}/apply`;
 
               return (
                 <article
                   key={job.slug}
                   className="flex flex-col justify-between gap-5 border-b border-[#DDE3EC] px-6 py-7 transition duration-300 last:border-0 hover:bg-[#F3F6FA]/70 md:flex-row md:items-center"
                 >
+
                   <div className="flex min-w-0 items-start gap-5">
+
                     <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#B28B36]/40 bg-[#B28B36]/10 text-[#B28B36]">
                       <BriefcaseBusiness size={20} />
                     </div>
 
                     <div>
+
                       <Link
                         href={detailHref}
                         className="text-lg font-semibold text-[#071536] underline-offset-4 transition hover:text-[#B28B36] hover:underline md:text-xl"
@@ -154,6 +160,7 @@ export default async function CareerOpportunitiesPage({
                       </Link>
 
                       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#374151]">
+
                         <span>
                           {`Job ID: RMT-${String(index + 1).padStart(3, "0")}`}
                         </span>
@@ -166,7 +173,9 @@ export default async function CareerOpportunitiesPage({
                           {job.experience}
                         </span>
 
-                        <span>{job.openings} Opening(s)</span>
+                        <span>
+                          {job.openings} Opening(s)
+                        </span>
 
                         <span className="flex items-center gap-1">
                           <MapPin
@@ -175,16 +184,19 @@ export default async function CareerOpportunitiesPage({
                           />
                           {job.location}
                         </span>
+
                       </div>
 
                       <p className="mt-3 max-w-2xl text-sm leading-6 text-[#374151]">
                         {job.summary}
                       </p>
+
                     </div>
                   </div>
 
                   {/* JOB ACTIONS */}
                   <div className="flex shrink-0 items-center gap-3 pl-16 md:pl-0">
+
                     <Link
                       href={applyHref}
                       className="inline-flex items-center gap-2 rounded-full border border-[#B28B36] bg-white px-6 py-3 text-sm font-semibold text-[#071536] transition duration-300 hover:bg-[#B28B36] hover:text-[#071536]"
@@ -197,7 +209,9 @@ export default async function CareerOpportunitiesPage({
                       title={job.title}
                       href={detailHref}
                     />
+
                   </div>
+
                 </article>
               );
             })}
@@ -205,6 +219,7 @@ export default async function CareerOpportunitiesPage({
             {/* EMPTY STATE */}
             {jobs.length === 0 && (
               <div className="px-6 py-16 text-center">
+
                 <BriefcaseBusiness
                   size={36}
                   className="mx-auto text-[#B28B36]"
@@ -213,10 +228,11 @@ export default async function CareerOpportunitiesPage({
                 <p className="mt-4 font-semibold text-[#071536]">
                   No open positions currently available.
                 </p>
+
               </div>
             )}
-          </div>
 
+          </div>
         </div>
       </section>
 

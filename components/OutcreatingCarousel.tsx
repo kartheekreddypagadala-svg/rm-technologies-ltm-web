@@ -68,9 +68,7 @@ export default function OutcreatingCarousel() {
 
         {/* Section heading */}
         <div className="mb-12 max-w-[850px]">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
-            RulingMind Technologies
-          </p>
+
 
           <h2 className="font-display text-[clamp(34px,5vw,62px)] font-semibold leading-[1.08] tracking-tight text-[#071536]">
             The technology partner for

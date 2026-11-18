@@ -7,6 +7,8 @@ import {
   Facebook,
 } from "lucide-react";
 
+import CookieSettingsButton from "@/components/cookies/CookieSettingsButton";
+
 const footerColumns = [
   {
     title: "Services",
@@ -161,10 +163,11 @@ export default function Footer() {
           {/* DIVIDER */}
           <div className="mt-7 h-px w-full bg-[#DDE3EC]" />
 
-          {/* LEGAL LINKS */}
+          {/* LEGAL LINKS AND COOKIE SETTINGS */}
           <div className="flex flex-col justify-between gap-5 pt-7 md:flex-row md:items-center">
 
-            <nav className="flex flex-wrap gap-x-7 gap-y-4">
+            <nav className="flex flex-wrap items-center gap-x-7 gap-y-4">
+
               {legalLinks.map((link) => (
                 <Link
                   key={link.label}
@@ -174,8 +177,13 @@ export default function Footer() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* COOKIE SETTINGS */}
+              <CookieSettingsButton className="text-[13px] font-medium text-[#374151] transition-colors hover:text-[#B28B36]" />
+
             </nav>
 
+            {/* COPYRIGHT */}
             <p className="shrink-0 text-[12px] text-[#374151]">
               © {new Date().getFullYear()} RulingMind Technologies.
               All rights reserved.

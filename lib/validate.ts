@@ -1,10 +1,9 @@
-
 import { services } from "@/lib/content";
 
 export const SERVICES: string[] = [
   ...services.map((s) => s.title),
   "Careers",
-  "Other",
+  "Other"
 ];
 
 export type ContactInput = {
@@ -17,11 +16,20 @@ export type ContactInput = {
   country?: string;
   service: string;
   message: string;
+  dataConsent: boolean;
+  marketingConsent: boolean;
 };
 
 type Result =
-  | { ok: true; spam: boolean; data: ContactInput }
-  | { ok: false; error: string };
+  | {
+      ok: true;
+      spam: boolean;
+      data: ContactInput;
+    }
+  | {
+      ok: false;
+      error: string;
+    };
 
 const str = (v: unknown) =>
   typeof v === "string" ? v.trim() : "";
@@ -47,43 +55,78 @@ export function parseContact(body: unknown): Result {
     country: str(b.country) || undefined,
     service: str(b.service),
     message: str(b.message),
+    dataConsent: b.dataConsent === true,
+    marketingConsent: b.marketingConsent === true
   };
 
+  // Consent is required before processing an enquiry.
+  if (!data.dataConsent) {
+    return {
+      ok: false,
+      error:
+        "Please tick the consent box so we can process your enquiry."
+    };
+  }
+
   if (!firstName && !lastName && !name) {
-    return { ok: false, error: "Please enter your name." };
+    return {
+      ok: false,
+      error: "Please enter your name."
+    };
   }
 
   if (name.length > 100) {
-    return { ok: false, error: "Your name is too long." };
+    return {
+      ok: false,
+      error: "Your name is too long."
+    };
   }
 
   if (
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ||
     data.email.length > 254
   ) {
-    return { ok: false, error: "Please enter a valid email." };
+    return {
+      ok: false,
+      error: "Please enter a valid email."
+    };
   }
 
   if (data.company && data.company.length > 150) {
-    return { ok: false, error: "Company name is too long." };
+    return {
+      ok: false,
+      error: "Company name is too long."
+    };
   }
 
   if (data.jobTitle && data.jobTitle.length > 100) {
-    return { ok: false, error: "Job title is too long." };
+    return {
+      ok: false,
+      error: "Job title is too long."
+    };
   }
 
   if (data.country && data.country.length > 80) {
-    return { ok: false, error: "Country name is too long." };
+    return {
+      ok: false,
+      error: "Country name is too long."
+    };
   }
 
   if (!SERVICES.includes(data.service)) {
-    return { ok: false, error: "Please choose a valid enquiry type." };
-  }
-
-  if (data.message.length < 5 || data.message.length > 4000) {
     return {
       ok: false,
-      error: "Message must be 5 to 4000 characters.",
+      error: "Please choose a valid enquiry type."
+    };
+  }
+
+  if (
+    data.message.length < 5 ||
+    data.message.length > 4000
+  ) {
+    return {
+      ok: false,
+      error: "Message must be 5 to 4000 characters."
     };
   }
 
@@ -91,6 +134,6 @@ export function parseContact(body: unknown): Result {
   return {
     ok: true,
     spam: str(b.website) !== "",
-    data,
+    data
   };
 }

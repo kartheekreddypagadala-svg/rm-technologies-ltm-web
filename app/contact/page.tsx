@@ -33,9 +33,7 @@ export default async function ContactPage({
 
         {/* LEFT CONTENT */}
         <div className="pt-1">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[2px] text-[#B28B36]">
-            RulingMindTech
-          </p>
+
 
           <h1 className="font-display text-[clamp(42px,5vw,60px)] font-medium leading-[1.08] tracking-[-2px] text-[#071536]">
             Contact Us

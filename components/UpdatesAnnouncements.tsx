@@ -36,9 +36,7 @@ export default function UpdatesAnnouncements() {
         {/* Section heading */}
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-[#B28B36]">
-              RulingMind Technologies
-            </p>
+
 
             <h2 className="font-display text-[clamp(36px,5vw,64px)] font-semibold leading-[1.05] tracking-tight text-white">
               Updates and

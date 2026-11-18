@@ -44,32 +44,53 @@ export default function ContactForm({
     e.preventDefault();
 
     const form = e.currentTarget;
+
     setStatus("sending");
     setError("");
 
     try {
       const formData = new FormData(form);
 
+      // Payload matching Spring Boot ContactRequest
       const payload = {
-        ...Object.fromEntries(formData.entries()),
+        firstName: String(formData.get("firstName") ?? ""),
+        lastName: String(formData.get("lastName") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        company: String(formData.get("company") ?? ""),
+        jobTitle: String(formData.get("jobTitle") ?? ""),
+        country: String(formData.get("country") ?? ""),
+        message: String(formData.get("message") ?? ""),
         dataConsent: formData.get("dataConsent") === "true",
         marketingConsent:
           formData.get("marketingConsent") === "true",
+        website: String(formData.get("website") ?? ""),
       };
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const apiUrl = process.env.NEXT_PUBLIC_SPRING_API_URL;
+
+      if (!apiUrl) {
+        throw new Error("Spring Boot API URL is not configured.");
+      }
+
+      const response = await fetch(
+        `${apiUrl.replace(/\/$/, "")}/api/v1/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(
-          result.error || "Unable to send your enquiry. Please try again."
+          result.message ||
+            result.detail ||
+            result.error ||
+            "Unable to send your enquiry. Please try again."
         );
       }
 
@@ -81,6 +102,7 @@ export default function ContactForm({
           ? err.message
           : "Something went wrong. Please try again."
       );
+
       setStatus("error");
     }
   }
@@ -187,7 +209,7 @@ export default function ContactForm({
         name="message"
         required
         minLength={5}
-        maxLength={4000}
+        maxLength={3000}
         rows={5}
         defaultValue={defaultMessage}
         placeholder="Let us know how we can help you*"
